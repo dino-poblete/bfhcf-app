@@ -1,5 +1,7 @@
 BfhcfApp::Application.routes.draw do
-  get "root/index"
+  get "static_pages/about"
+  get "static_pages/home"
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -7,7 +9,9 @@ BfhcfApp::Application.routes.draw do
 
   resource :posts
 
-  root 'root#index'
+  root to: 'static_pages#home'
+
+  match '/about',    to: 'static_pages#about', via: 'get'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
