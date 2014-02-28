@@ -12,6 +12,7 @@ BfhcfApp::Application.routes.draw do
   root to: 'static_pages#home'
 
   match '/about',    to: 'static_pages#about', via: 'get'
+  match '/devotionals',    to: 'devotionals#index', via: 'get'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

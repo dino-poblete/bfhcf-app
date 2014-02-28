@@ -80,7 +80,7 @@ $("#slist a").click(function(e){
    $(this).next('p').toggle(200);
 });
 
-$('.entry .content').readmore({
+$('.entry .home-post-content').readmore({
 
     maxHeight: 240,
     speed: 500,
@@ -98,4 +98,8 @@ $('.entry .content').readmore({
         }
     }
 
+});
+
+$(function() {
+    $( "#devotional-datepicker" ).datepicker();
 });

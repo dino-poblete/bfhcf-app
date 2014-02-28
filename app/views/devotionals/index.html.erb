@@ -1,67 +1,37 @@
-<!-- Slider starts -->
-
-<div class="full-slider">
-  <!-- Slider (Flex Slider) -->
-
-  <div class="container-full-width">
-    <div class="row no-margin">
-      <div class="col-md-12 no-padd">
-        <div class="flexslider">
-          <ul class="slides">
-
-            <li>
-              <div class="flex-center">
-                <%= image_tag "announcements/theme_feb2014.jpg" %>
-              </div>
-
-            </li>
-            <li>
-              <div class="flex-center">
-                <%= image_tag "announcements/run.jpg" %>
-              </div>
-
-            </li>
-
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Slider Ends -->
+<%= title('Devotionals') %>
 
 <div class="content">
-<div class="container">
+  <div class="container">
 
-
-<!-- Hero Unit -->
-
-<div class="row center">
-  <div class="col-md-12">
-
-    <div class="bor"></div>
-
-    <h2>Welcome to Bread From Heaven Christian Fellowship</h2>
-    <p>The Bread From Heaven Christian Fellowship, Inc. is an independent, Christian and Reformed Evangelical congregation. Member of the Philippine Council of Evangelical Churches (PCEC).</p>
-    <div class="bor"></div>
+    <h2>Devotionals</h2>
     <hr />
-  </div>
-</div>
 
-<!-- Hero Ends -->
+    <!-- Devotional starts -->
 
-<!-- devotional starts -->
-
-<div class="blog">
-  <div class="row">
-    <div class="col-md-12">
-      <h3>God's Word for Today</h3>
-      <div class="bor"></div>
-      <!-- Blog Posts -->
+    <div class="blog">
       <div class="row">
         <div class="col-md-12 col-sm-12">
           <div class="posts">
+
+            <div class="cwell">
+              <!-- Contact form -->
+              <h5>Load a Devotional from a Different Day.</h5>
+              <div class="col-md-12 col-sm-12">
+
+                <form class="form-inline" role="form">
+                <div class="row">
+
+                      <div class="col-md-6">
+                          <div class="form-group">
+                            <input type="text" class="form-control" id="devotional-datepicker" placeholder="Enter date...">
+                          </div>
+                          <button type="submit" class="btn btn-default">Go</button>
+                    </div>
+                </div>
+                </form>
+
+              </div>
+            </div>
 
             <!-- Each posts should be enclosed inside "entry" class" -->
             <!-- Post one -->
@@ -76,15 +46,15 @@
                   </div>
                 </div>
                 <div class="col-md-10 col-sm-10">
-                  <h5>MOST CHRISTIANS HAVE MORE OF FAITH AND HOPE THAN LOVE. Are you one of those Christians?</h5>
-                  <h6>1 Cor 13:1-13</h6>
+                  <h2>MOST CHRISTIANS HAVE MORE OF FAITH AND HOPE THAN LOVE. Are you one of those Christians?</h2>
+                  <h4>1 Cor 13:1-13</h4>
                   <!-- Meta details -->
                   <div class="meta">
                     <i class="fa fa-calendar"></i> 02-14-2014 <i class="fa fa-user"></i> Pastor Doy Castillo
                   </div>
                 </div>
               </div>
-              <div class="home-post-content">
+              <div class="content">
                 <!--<p>Introduction:</p>-->
                 <p>Paul makes a rather startling conclusion in 1 Corinthians 13: He is saying that one may have the great spirituals gifts such as: The gift of being able to speak the tongues of men as well as of angels; the gift of prophecy that can look into mysteries and knowledge and the gift of faith that can move mountains, or even the rare gift of martyrdom. Paul says, with all these, if you do not have love, you still are nothing.</p>
 
@@ -202,265 +172,9 @@
           </div>
         </div>
       </div>
-
-
-
-    </div>
-  </div>
-</div>
-
-<!-- Blog ends -->
-
-<div class="bor"></div>
-<hr />
-
-<div class="row">
-  <div class="col-md-12">
-    <h3>Ministries</h3>
-    <div class="bor"></div>
-
-    <!-- Image blocks starts -->
-
-    <ul class="hover-block">
-
-      <li>
-
-        <a href="#">
-          <!-- Image -->
-          <%= image_tag "photos/tn_1.jpg" %>
-          <!-- Content with background color Class -->
-          <div class="hover-content b-orange">
-            <h6>Clusters</h6>
-            Suspendisse potenti. Morbi ac felis nec mauris imperdiet fermentum. Aenean sodales augue ac lacus hendrerit.
-          </div>
-        </a>
-
-      </li>
-
-
-      <li>
-
-        <a href="#">
-          <%= image_tag "photos/tn_2.jpg" %>
-          <div class="hover-content b-red">
-            <h6>Children's Ministry</h6>
-            Suspendisse potenti. Morbi ac felis nec mauris imperdiet fermentum. Aenean sodales augue ac lacus hendrerit.
-          </div>
-        </a>
-
-      </li>
-
-
-      <li>
-
-        <a href="#">
-          <%= image_tag "photos/tn_3.jpg" %>
-          <div class="hover-content b-purple">
-            <h6>Praise and Worship</h6>
-            Suspendisse potenti. Morbi ac felis nec mauris imperdiet fermentum. Aenean sodales augue ac lacus hendrerit.
-          </div>
-        </a>
-
-      </li>
-
-      <li>
-
-        <a href="#">
-          <%= image_tag "photos/tn_3.jpg" %>
-          <div class="hover-content b-black">
-            <h6>Multimedia</h6>
-            Suspendisse potenti. Morbi ac felis nec mauris imperdiet fermentum. Aenean sodales augue ac lacus hendrerit.
-          </div>
-        </a>
-
-      </li>
-
-      <li>
-
-        <a href="#">
-          <%= image_tag "photos/tn_4.jpg" %>
-          <div class="hover-content b-lblue">
-            <h6>Men in Bread</h6>
-            Suspendisse potenti. Morbi ac felis nec mauris imperdiet fermentum. Aenean sodales augue ac lacus hendrerit.
-          </div>
-        </a>
-
-      </li>
-
-      <li>
-
-        <a href="#">
-          <%= image_tag "photos/tn_4.jpg" %>
-          <div class="hover-content b-red">
-            <h6>Women of Bread</h6>
-            Suspendisse potenti. Morbi ac felis nec mauris imperdiet fermentum. Aenean sodales augue ac lacus hendrerit.
-          </div>
-        </a>
-
-      </li>
-      <li>
-
-        <a href="#">
-          <!-- Image -->
-          <%= image_tag "photos/tn_1.jpg" %>
-          <!-- Content with background color Class -->
-          <div class="hover-content b-blue">
-            <h6>Salt and Light</h6>
-            Suspendisse potenti. Morbi ac felis nec mauris imperdiet fermentum. Aenean sodales augue ac lacus hendrerit.
-          </div>
-        </a>
-
-      </li>
-
-
-      <li>
-
-        <a href="#">
-          <%= image_tag "photos/tn_2.jpg" %>
-          <div class="hover-content b-black">
-            <h6>Young People's Fellowship</h6>
-            Suspendisse potenti. Morbi ac felis nec mauris imperdiet fermentum. Aenean sodales augue ac lacus hendrerit.
-          </div>
-        </a>
-
-      </li>
-
-
-      <li>
-
-        <a href="#">
-          <%= image_tag "photos/tn_3.jpg" %>
-          <div class="hover-content b-green">
-            <h6>Kaagapay Ministry</h6>
-            Suspendisse potenti. Morbi ac felis nec mauris imperdiet fermentum. Aenean sodales augue ac lacus hendrerit.
-          </div>
-        </a>
-
-      </li>
-
-
-      <li>
-
-        <a href="#">
-          <%= image_tag "photos/tn_4.jpg" %>
-          <div class="hover-content b-blue">
-            <h6>Membership</h6>
-            Suspendisse potenti. Morbi ac felis nec mauris imperdiet fermentum. Aenean sodales augue ac lacus hendrerit.
-          </div>
-        </a>
-
-      </li>
-
-    </ul>
-
-    <div class="clearfix"></div>
-
-    <!-- Image blocks ends -->
-  </div>
-</div>
-
-<div class="bor"></div>
-
-<div class="border"></div>
-
-
-
-<!-- Color blocks starts -->
-
-<div class="color-blocks">
-  <div class="row">
-
-    <div class="col-md-4">
-
-      <div class="c-block">
-
-        <!-- Left column with color background -->
-        <div class="col-l b-red">
-          <!-- Link -->
-          <a href="contactus.html">
-            <!-- Icon -->
-            <i class="fa fa-envelope-o"></i>
-            <!-- Text -->
-            Contact
-          </a>
-        </div>
-
-        <div class="col-r b-purple">
-          <a href="about.html">
-            <i class="fa fa-user"></i>
-            About
-          </a>
-        </div>
-
-      </div>
-
-      <div class="clearfix"></div>
-
     </div>
 
-    <div class="col-md-4">
-
-      <div class="c-block">
-
-        <!-- Left column with color background -->
-        <div class="col-l b-green">
-          <!-- Link -->
-          <a href="blog.html">
-            <!-- Icon -->
-            <i class="fa fa-comments"></i>
-            <!-- Text -->
-            Blog
-          </a>
-        </div>
-
-        <div class="col-r b-blue">
-          <a href="#">
-            <i class="fa fa-facebook"></i>
-            Facebook
-          </a>
-        </div>
-
-      </div>
-
-      <div class="clearfix"></div>
-
-    </div>
-
-    <div class="col-md-4">
-
-      <div class="c-block">
-
-        <!-- Left column with color background -->
-        <div class="col-l b-lblue">
-          <!-- Link -->
-          <a href="#">
-            <!-- Icon -->
-            <i class="fa fa-twitter"></i>
-            <!-- Text -->
-            Twitter
-          </a>
-        </div>
-
-        <div class="col-r b-orange">
-          <a href="#">
-            <i class="fa fa-google-plus"></i>
-            Google Plus
-          </a>
-        </div>
-
-      </div>
-
-      <div class="clearfix"></div>
-
-    </div>
+    <div class="border"></div>
 
   </div>
 </div>
-
-
-<!-- Color blocks ends -->
-
-</div>
-</div>
-
-<%= render "layouts/social" %>
