@@ -2009,6 +2009,10 @@ footer .copy{
 	margin-top: 10px;
 }
 
+.form-group{
+  margin-bottom: 15px !important;
+}
+
 /* Responsive */
 
 @media (max-width: 480px){
@@ -2124,6 +2128,10 @@ footer .copy{
         text-align: center;
         margin-bottom: 20px;
         /*border: 1px solid #aaa;*/
+    }
+
+    .blog .posts .cwell .form-content {
+      text-align: center;
     }
 }
 
