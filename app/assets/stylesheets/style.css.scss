@@ -2015,7 +2015,7 @@ footer .copy{
 
 /* Responsive */
 
-@media (max-width: 480px){
+@media only screen and (max-width: 480px){
    .col-l{
 	   	width: 100%;
 	   	float: none;
@@ -2062,7 +2062,7 @@ footer .copy{
    }
 }
 
-@media (max-width: 767px){
+@media only screen and (max-width: 767px){
 	.border{
 		margin:10px 0px 5px 0px;
 	}
@@ -2135,7 +2135,7 @@ footer .copy{
     }
 }
 
-@media (min-width: 890px){
+@media only screen and (min-width: 890px){
     header .logo .logo-header{
         display: table-cell;
         vertical-align: middle;
@@ -2146,7 +2146,7 @@ footer .copy{
 
 
 
-@media (max-width: 991px){
+@media only screen and (max-width: 991px){
  	.dropdown-menu{
  		border: 0px !important;
  	}
