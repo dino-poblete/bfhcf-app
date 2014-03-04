@@ -377,19 +377,11 @@
         <!-- Left column with color background -->
         <div class="col-l b-red">
           <!-- Link -->
-          <a href="contactus.html">
-            <!-- Icon -->
-            <i class="fa fa-envelope-o"></i>
-            <!-- Text -->
-            Contact
-          </a>
+          <%= link_to(raw("<i class='fa fa-envelope-o'></i> Contact"), contact_path)  %>
         </div>
 
         <div class="col-r b-purple">
-          <a href="about.html">
-            <i class="fa fa-user"></i>
-            About
-          </a>
+          <%= link_to(raw("<i class='fa fa-user'></i> About"), about_path)  %>
         </div>
 
       </div>
@@ -405,19 +397,11 @@
         <!-- Left column with color background -->
         <div class="col-l b-green">
           <!-- Link -->
-          <a href="blog.html">
-            <!-- Icon -->
-            <i class="fa fa-comments"></i>
-            <!-- Text -->
-            Blog
-          </a>
+          <%= link_to(raw("<i class='fa fa-book'></i> Sermons"), sermons_path)  %>
         </div>
 
         <div class="col-r b-blue">
-          <a href="#">
-            <i class="fa fa-facebook"></i>
-            Facebook
-          </a>
+          <%= link_to(raw("<i class='fa fa-group'></i> Ministries"), ministries_path )  %>
         </div>
 
       </div>
@@ -433,19 +417,12 @@
         <!-- Left column with color background -->
         <div class="col-l b-lblue">
           <!-- Link -->
-          <a href="#">
-            <!-- Icon -->
-            <i class="fa fa-twitter"></i>
-            <!-- Text -->
-            Twitter
-          </a>
+          <%= link_to(raw("<i class='fa fa-calendar'></i> Events"), events_path )  %>
+
         </div>
 
         <div class="col-r b-orange">
-          <a href="#">
-            <i class="fa fa-google-plus"></i>
-            Google Plus
-          </a>
+          <%= link_to(raw("<i class='fa fa-picture-o'></i> Gallery"), gallery_path )  %>
         </div>
 
       </div>
