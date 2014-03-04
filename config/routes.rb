@@ -1,4 +1,5 @@
 BfhcfApp::Application.routes.draw do
+  get "gallery/index"
   get "events/index"
   get "static_pages/about"
   get "static_pages/home"
@@ -17,6 +18,7 @@ BfhcfApp::Application.routes.draw do
   match '/sermons',    to: 'sermons#index', via: 'get'
   match '/ministries',    to: 'static_pages#ministries', via: 'get'
   match '/events',    to: 'events#index', via: 'get'
+  match '/gallery',    to: 'gallery#index', via: 'get'
   match '/contact',    to: 'static_pages#contact', via: 'get'
 
   # Example of regular route:

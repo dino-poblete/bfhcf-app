@@ -12,12 +12,16 @@ $(function() {
 	});
 
 });
-/* prettyPhoto Gallery */
 
-jQuery(".prettyphoto").prettyPhoto({
-   overlay_gallery: false, social_tools: false
+$(document).ready(function () {
+    $("a[rel^='prettyPhoto']").prettyPhoto({
+        theme: 'facebook',
+        slideshow: 5000,
+        autoplay_slideshow: false,
+        overlay_gallery: false,
+        social_tools: false
+    });
 });
-
 /* Isotope */
 
 // cache container

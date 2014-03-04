@@ -1,0 +1,66 @@
+<%= title('Events') %>
+
+<div class="content">
+  <div class="container">
+
+    <h2>Gallery</h2>
+    <hr />
+
+    <!-- Sermon Starts -->
+
+    <div class="blog">
+      <div class="row sermon">
+        <div class="col-md-12">
+
+          <!-- Blog Posts -->
+          <div class="row">
+
+            <div class="col-md-4 col-sm-4">
+              <div class="sidebar">
+                <!-- Widget -->
+                <div class="widget">
+                  <h4>Albums</h4>
+                  <ul>
+                    <li><a href="#">Sed eu leo orci, condimentum gravida metus</a></li>
+                    <li><a href="#">Etiam at nulla ipsum, in rhoncus purus</a></li>
+                    <li><a href="#">Fusce vel magna faucibus felis dapibus facilisis</a></li>
+                    <li><a href="#">Vivamus scelerisque dui in massa</a></li>
+                    <li><a href="#">Pellentesque eget adipiscing dui semper</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+              <div class="col-md-8 col-sm-8">
+
+
+                <!-- For image lightbox you need to include "a" tag pointing to image link, along with the class "prettyphoto".-->
+                <div class="gallery">
+                  <!-- Full size image link in anchor tag. Thumbnail link in image tag. -->
+
+                  <%= link_to image_tag("portfolio/1.jpg"), image_path("portfolio/1.jpg"), class: "prettyphoto", rel: "prettyPhoto[pp_gal]" %>
+                  <%= link_to image_tag("portfolio/2.jpg"), image_path("portfolio/2.jpg"), class: "prettyphoto", rel: "prettyPhoto[pp_gal]" %>
+                  <%= link_to image_tag("portfolio/3.jpg"), image_path("portfolio/3.jpg"), class: "prettyphoto", rel: "prettyPhoto[pp_gal]" %>
+                  <%= link_to image_tag("portfolio/4.jpg"), image_path("portfolio/4.jpg"), class: "prettyphoto", rel: "prettyPhoto[pp_gal]" %>
+                  <%= link_to image_tag("portfolio/5.jpg"), image_path("portfolio/5.jpg"), class: "prettyphoto", rel: "prettyPhoto[pp_gal]" %>
+                  <%= link_to image_tag("portfolio/6.jpg"), image_path("portfolio/6.jpg"), class: "prettyphoto", rel: "prettyPhoto[pp_gal]" %>
+                  <%= link_to image_tag("portfolio/7.jpg"), image_path("portfolio/7.jpg"), class: "prettyphoto", rel: "prettyPhoto[pp_gal]" %>
+                  <%= link_to image_tag("portfolio/8.jpg"), image_path("portfolio/8.jpg"), class: "prettyphoto", rel: "prettyPhoto[pp_gal]" %>
+                  <%= link_to image_tag("portfolio/9.jpg"), image_path("portfolio/9.jpg"), class: "prettyphoto", rel: "prettyPhoto[pp_gal]" %>
+                </div>
+
+              </div>
+
+
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+    <hr/>
+
+  </div>
+</div>
