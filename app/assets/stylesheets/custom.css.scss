@@ -35,6 +35,21 @@ header{
   border-bottom: 3px solid #1570a6;
 }
 
+.bg-orange{
+  background-color: #fe781e;
+  color: #fff;
+}
+
+.bg-green{
+  background-color: #41bb19;
+  color: #fff;
+}
+
+.bg-blue{
+  background-color: #1570a6;
+  color: #fff;
+}
+
 .da-slide h2 span{
   background: url("../images/border-b.png") left bottom no-repeat;
 }
@@ -123,6 +138,8 @@ header{
   background: #1570a6;
 }
 
+
+
 .button a{
   background: #1570a6;
 }
@@ -137,4 +154,20 @@ header{
 
 .paging .current{
   background: #11608f;
+}
+
+.devotional .button a{
+  background: #fe781e;
+}
+
+.devotional button a:hover{
+  background: #e66d1c;
+}
+
+.devotional .paging a:hover{
+  background: #fe781e;
+}
+
+.devotional .paging .current{
+  background: #e66d1c;
 }
