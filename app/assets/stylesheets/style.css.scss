@@ -753,6 +753,23 @@ color: #777;
     margin-bottom: 10px;
 }
 
+.blog .devotional .entry .blog-header {
+  background: #1570a6;
+  color: #fff;
+}
+
+.blog .sermon .entry .blog-header {
+  background: #fe781e;
+  color: #fff;
+}
+
+.blog .devotional .entry .blog-header, .blog .sermon .entry .blog-header {
+  h2, h4, .meta{
+    color: #fff;
+  }
+}
+
+
 .blog .entry h2 a, .blog .entry h2 a:visited, .blog .entry h2 a:hover{
 text-decoration:none;
 color:#777;
@@ -824,6 +841,7 @@ background:#f7f7f7;
 border:1px solid #e1e1e1;
 padding:8px;
 margin-top:10px;
+margin-bottom:20px;
 }
 
 .sidebar h4{
@@ -1358,6 +1376,28 @@ margin:0 auto;
 border-top:1px solid #eee;
 margin-top:5px;
 padding-top: 5px;
+}
+
+
+.aboutus {
+  .pastor .pic img {
+    border: 5px solid #1570a6;
+  }
+  .pulpit-pastor .pic img {
+    border: 5px solid #fe781e;
+  }
+  .council .pic img {
+    border: 5px solid #ff3738;
+  }
+  .elder .pic img {
+    border: 5px solid #9b59bb;
+  }
+  .deacon .pic img {
+    border: 5px solid #1ba1e2;
+  }
+  .officer .pic img {
+    border: 5px solid #333333;
+  }
 }
 
 /* Slider 1 (Parallax Slider) */
@@ -2071,6 +2111,8 @@ footer .copy{
    .aboutus{
    	text-align: center;
    }
+
+
 }
 
 @media only screen and (max-width: 767px){
