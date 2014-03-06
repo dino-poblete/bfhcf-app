@@ -16,6 +16,7 @@ BfhcfApp::Application.routes.draw do
   match '/about',    to: 'static_pages#about', via: 'get'
   match '/devotionals',    to: 'devotionals#index', via: 'get'
   match '/sermons',    to: 'sermons#index', via: 'get'
+  match '/sermons/show',    to: 'sermons#show', via: 'get'
   match '/ministries',    to: 'static_pages#ministries', via: 'get'
   match '/events',    to: 'events#index', via: 'get'
   match '/gallery',    to: 'gallery#index', via: 'get'

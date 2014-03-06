@@ -2144,9 +2144,20 @@ footer .copy{
     .blog .posts .cwell .form-content {
       text-align: center;
     }
+
+    header .logo {
+      margin: 0 auto;
+
+    }
 }
 
-@media only screen and (min-width: 890px){
+@media only screen and (max-width: 568px){
+    header .logo .logo-header {
+      display: none;
+    }
+}
+
+@media only screen and (min-width: 768px){
     header .logo .logo-header{
         display: table-cell;
         vertical-align: middle;
