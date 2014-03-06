@@ -50,6 +50,11 @@ header{
   color: #fff;
 }
 
+.bg-black{
+  background-color: #333333;
+  color: #fff;
+}
+
 .da-slide h2 span{
   background: url("../images/border-b.png") left bottom no-repeat;
 }
@@ -156,18 +161,34 @@ header{
   background: #11608f;
 }
 
-.home.devotional .button a{
+.home.devotional .button a, .sermon .button a{
   background: #fe781e;
 }
 
-.home.devotional button a:hover{
+.home.devotional button a:hover, .sermon .button a:hover{
   background: #e66d1c;
 }
 
-.home.devotional .paging a:hover{
+.home.devotional .paging a:hover, .sermon .paging a:hover{
   background: #fe781e;
 }
 
-.home.devotional .paging .current{
+.home.devotional .paging .current, .sermon .paging .current {
   background: #e66d1c;
+}
+
+.button a{
+  background: #1570a6;
+}
+
+.button a:hover{
+  background: #11608f;
+}
+
+.paging a:hover{
+  background: #1570a6;
+}
+
+.paging .current{
+  background: #11608f;
 }

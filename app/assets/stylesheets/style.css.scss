@@ -745,7 +745,7 @@ line-height:40px;
 color: #777;
 }
 
-.blog h3 {
+.blog h3, .ministries h3 {
   padding: 10px;
 }
 
@@ -1380,23 +1380,28 @@ padding-top: 5px;
 
 
 .aboutus {
-  .pastor .pic img {
-    border: 5px solid #1570a6;
-  }
-  .pulpit-pastor .pic img {
-    border: 5px solid #fe781e;
-  }
-  .council .pic img {
-    border: 5px solid #ff3738;
-  }
-  .elder .pic img {
-    border: 5px solid #9b59bb;
-  }
-  .deacon .pic img {
-    border: 5px solid #1ba1e2;
-  }
-  .officer .pic img {
-    border: 5px solid #333333;
+  h3 {
+    padding: 10px;
+    color: #fff;
+
+    &.pastor {
+      background: #1570a6;
+    }
+    &.pulpit-pastor {
+      background: #fe781e;
+    }
+    &.council {
+      background: #ff3738;
+    }
+    &.elder {
+      background: #9b59bb;
+    }
+    &.deacon {
+      background: #1ba1e2;
+    }
+    &.officer {
+      background: #333333;
+    }
   }
 }
 
@@ -1519,7 +1524,7 @@ left: 5px !important;
 ul.hover-block li{
 	list-style:none;
 	float:left;
-	width:222px; 
+	width:222px;
 	height: 170px;
 	position: relative;
 	margin: 5px 4px;
@@ -1558,6 +1563,7 @@ ul.hover-block li img {
 	left: 0;
 	border: 0;
 	z-index: 500;
+    width: 100%;
 }
 
 /* Content */
