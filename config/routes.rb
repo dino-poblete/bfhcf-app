@@ -1,4 +1,8 @@
 BfhcfApp::Application.routes.draw do
+  resources :devotionals
+
+  resources :users
+
   get "gallery/index"
   get "events/index"
   get "static_pages/about"
@@ -21,6 +25,8 @@ BfhcfApp::Application.routes.draw do
   match '/events',    to: 'events#index', via: 'get'
   match '/gallery',    to: 'gallery#index', via: 'get'
   match '/contact',    to: 'static_pages#contact', via: 'get'
+
+  match '/signup',  to: 'users#new',            via: 'get'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

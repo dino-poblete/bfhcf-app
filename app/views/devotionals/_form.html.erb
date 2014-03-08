@@ -1,0 +1,38 @@
+
+
+<div class="form-group">
+    <div class="col-md-12">
+      <%= render 'shared/error_messages', object: f.object  %>
+    </div>
+</div>
+
+<hr/>
+
+<div class="form-group">
+  <%= f.label :title, class:"control-label col-md-3" %>
+  <div class="col-md-9">
+    <%= f.text_field :title, class:"form-control", id:"title" %>
+
+  </div>
+</div>
+<!-- Subtitle -->
+<div class="form-group">
+  <%= f.label :subtitle, class:"control-label col-md-3" %>
+  <div class="col-md-9">
+    <%= f.text_field :subtitle, class:"form-control", id:"subtitle" %>
+  </div>
+</div>
+<!-- Posted Date -->
+<div class="form-group">
+  <%= f.label :posted_at, class:"control-label col-md-3" %>
+  <div class="col-md-9">
+    <%= f.text_field :posted_at, class:"form-control", id:"posted_at" %>
+  </div>
+</div>
+<!-- Content -->
+<div class="form-group">
+  <%= f.label :content, class:"control-label col-md-3" %>
+  <div class="col-md-9">
+    <%= f.text_area :content, class:"form-control", id:"content"  %>
+  </div>
+</div>
