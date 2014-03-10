@@ -47,6 +47,9 @@
         <li><%= link_to "Events", events_path %></li>
         <li><%= link_to "Gallery", gallery_path %></li>
         <li><%= link_to "Contact Us", contact_path %></li>
+        <% if signed_in? %>
+            <li><%= link_to "Sign out", signout_path %></li>
+        <% end %>
       </ul>
     </nav>
   </div>

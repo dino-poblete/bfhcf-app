@@ -1,32 +1,31 @@
 BfhcfApp::Application.routes.draw do
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
   resources :devotionals
 
-  resources :users
-
-  get "gallery/index"
-  get "events/index"
-  get "static_pages/about"
-  get "static_pages/home"
-  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
 
-  resource :posts
+  #resource :posts
 
   root to: 'static_pages#home'
 
-  match '/about',    to: 'static_pages#about', via: 'get'
-  match '/devotionals',    to: 'devotionals#index', via: 'get'
-  match '/sermons',    to: 'sermons#index', via: 'get'
-  match '/sermons/show',    to: 'sermons#show', via: 'get'
-  match '/ministries',    to: 'static_pages#ministries', via: 'get'
-  match '/events',    to: 'events#index', via: 'get'
-  match '/gallery',    to: 'gallery#index', via: 'get'
-  match '/contact',    to: 'static_pages#contact', via: 'get'
-
   match '/signup',  to: 'users#new',            via: 'get'
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'get'
+
+
+  match '/about',           to: 'static_pages#about',       via: 'get'
+  match '/devotionals',     to: 'devotionals#index',        via: 'get'
+  match '/sermons',         to: 'sermons#index',            via: 'get'
+  match '/sermons/show',    to: 'sermons#show',             via: 'get'
+  match '/ministries',      to: 'static_pages#ministries',  via: 'get'
+  match '/events',          to: 'events#index',             via: 'get'
+  match '/gallery',         to: 'gallery#index',            via: 'get'
+  match '/contact',         to: 'static_pages#contact',     via: 'get'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
