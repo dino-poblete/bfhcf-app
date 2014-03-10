@@ -1,19 +1,59 @@
-<p id="notice"><%= notice %></p>
+<%= title(full_name) %>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+<div class="content">
+  <div class="container">
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+    <h2><%= full_name %></h2>
+    <hr />
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="cwell">
+          <!-- Contact form -->
+          <h5>User Information</h5>
+
+          <% if !flash.empty? %>
+          <div class="alert alert-success"> <%= notice %></div>
+          <% end  %>
+
+          <div class="profile-user-info profile-user-info-striped">
+            <div class="profile-info-row">
+              <div class="profile-info-name"> Email </div>
+
+              <div class="profile-info-value">
+                <span class="editable editable-click" id="email"><%= @user.email %></span>
+              </div>
+            </div>
+
+            <div class="profile-info-row">
+              <div class="profile-info-name"> Last Name </div>
+
+              <div class="profile-info-value">
+                <span class="editable editable-click" id="last_name"><%= @user.last_name %></span>
+              </div>
+            </div>
+
+            <div class="profile-info-row">
+              <div class="profile-info-name"> First Name </div>
+
+              <div class="profile-info-value">
+                <span class="editable editable-click" id="first_name"><%= @user.first_name %></span>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+    <%= link_to 'Back', users_path %>
+
+
+  </div>
+</div>
+
+

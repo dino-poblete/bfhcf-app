@@ -1,31 +1,40 @@
-<h1>Listing users</h1>
+<%= title('Users') %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Last name</th>
-      <th>First name</th>
-      <th>Email</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="content">
+  <div class="container">
 
-  <tbody>
-    <% @users.each do |user| %>
+    <h2>Listing Users</h2>
+    <hr />
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
       <tr>
-        <td><%= user.last_name %></td>
-        <td><%= user.first_name %></td>
-        <td><%= user.email %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Last name</th>
+        <th>First name</th>
+        <th>Email</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      </thead>
 
-<br>
+      <tbody>
+      <% @users.each do |user| %>
+          <tr>
+            <td><%= user.last_name %></td>
+            <td><%= user.first_name %></td>
+            <td><%= user.email %></td>
+            <td><%= link_to 'Show', user %></td>
+            <td><%= link_to 'Edit', edit_user_path(user) %></td>
+            <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
 
-<%= link_to 'New User', new_user_path %>
+    <%= link_to 'New User', signup_path %>
+  </div>
+</div>
+
+
+
+

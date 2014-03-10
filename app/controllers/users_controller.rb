@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
+  #before_filter :signed_in_user_access, only: [:new, :create]
+  before_action :correct_user,   only: [:edit, :update]
+  #before_filter :admin_user,     only: :destroy
 
   # GET /users
   # GET /users.json
@@ -20,6 +24,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find(params[:id])
   end
 
   # POST /users
@@ -29,11 +34,13 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        sign_in @user
-        flash[:success] = "Welcome to BFHCF!"
-        redirect_to root_url
+        #sign_in @user
+        #flash[:success] = "Welcome to BFHCF!"
+        #redirect_to root_url
+        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @user }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'new'}
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -72,5 +79,15 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:last_name, :first_name, :email, :password, :password_confirmation)
+    end
+
+    #before filters
+    def signed_in_user
+      redirect_to signin_url, notice: "Please sign in." unless signed_in?
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
     end
 end

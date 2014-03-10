@@ -10,15 +10,22 @@ BfhcfApp::Application.routes.draw do
 
   #resource :posts
 
+
   root to: 'static_pages#home'
 
   match '/signup',  to: 'users#new',            via: 'get'
+  match '/signup', :to => 'users#create', :via => :post, :as => :post_signup
+
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'get'
 
 
+
   match '/about',           to: 'static_pages#about',       via: 'get'
+
   match '/devotionals',     to: 'devotionals#index',        via: 'get'
+  match '/devotionals/new', :to => 'devotionals#create', :via => :post, :as => :post_devotionals_new
+
   match '/sermons',         to: 'sermons#index',            via: 'get'
   match '/sermons/show',    to: 'sermons#show',             via: 'get'
   match '/ministries',      to: 'static_pages#ministries',  via: 'get'

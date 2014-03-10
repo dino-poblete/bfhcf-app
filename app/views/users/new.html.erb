@@ -14,8 +14,8 @@
           <h5>Add New User</h5>
           <div class="form">
 
+            <%= form_for (@user), url: post_signup_path, html: {class: "form-horizontal"} do |f| %>
 
-            <%= form_for @user, html: {class: "form-horizontal"} do |f| %>
                 <%= render 'form', f: f %>
 
 
