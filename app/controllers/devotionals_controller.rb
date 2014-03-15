@@ -1,5 +1,6 @@
 class DevotionalsController < ApplicationController
   before_action :set_devotional, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in_user, only: [:list, :show, :edit, :update, :destroy]
 
   # GET /devotionals
   # GET /devotionals.json
@@ -7,9 +8,15 @@ class DevotionalsController < ApplicationController
     @devotionals = Devotional.all
   end
 
+
+  def list
+    @devotionals = Devotional.paginate(page: params[:page])
+  end
+
   # GET /devotionals/1
   # GET /devotionals/1.json
   def show
+    @devotional = Devotional.find(params[:id])
   end
 
   # GET /devotionals/new
@@ -19,6 +26,7 @@ class DevotionalsController < ApplicationController
 
   # GET /devotionals/1/edit
   def edit
+    @devotional = Devotional.find(params[:id])
   end
 
   # POST /devotionals
@@ -27,6 +35,14 @@ class DevotionalsController < ApplicationController
     @devotional = Devotional.new(devotional_params)
 
     respond_to do |format|
+      ##@devotional = current_user.devotional.build(devotional_params)
+      #if @devotional.save
+      #  flash[:success] = "Devotional created!"
+      #  redirect_to root_url
+      #else
+      #  render 'new'
+      #end
+
       if @devotional.save
         format.html { redirect_to @devotional, notice: 'Devotional was successfully created.' }
         format.json { render action: 'show', status: :created, location: @devotional }
@@ -69,6 +85,6 @@ class DevotionalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def devotional_params
-      params.require(:devotional).permit(:title, :subtitle, :posted_at, :content)
+      params.require(:devotional).permit(:title, :subtitle, :posted_at, :content, :user_id)
     end
 end

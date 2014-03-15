@@ -7,6 +7,8 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'meta-tags', :require => 'meta_tags'
 gem 'bcrypt-ruby'
+gem 'will_paginate'
+
 # Use sqlite3 as the database for Active Record
 group :development do
   gem 'sqlite3', '1.3.8'

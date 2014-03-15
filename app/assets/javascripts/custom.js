@@ -105,7 +105,12 @@ $('.entry .home-post-content').readmore({
 });
 
 $(function() {
-    $( "#devotional-datepicker" ).datepicker();
+    $( "#devotional-datepicker" ).datepicker({
+        dateFormat: 'yy-mm-dd'
+    });
+    $( "#posted_at" ).datepicker({
+        dateFormat: 'yy-mm-dd'
+    });
 });
 
 $(function() {
@@ -129,3 +134,13 @@ $(function() {
         }
     });
 });
+
+$(document).ready(function(){
+
+    $('#content').each(function(i, elem) {
+        $(elem).wysihtml5({
+            "image": false
+        });
+    });
+
+})

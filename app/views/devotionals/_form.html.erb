@@ -24,7 +24,7 @@
 <div class="form-group">
   <%= f.label :posted_at, class:"control-label col-md-3" %>
   <div class="col-md-9">
-    <%= f.text_field :posted_at, class:"form-control", id:"posted_at" %>
+    <%= f.text_field :posted_at, class:"form-control", id:"posted_at", placeholder: 'yyyy-mm-dd'  %>
   </div>
 </div>
 <!-- Content -->
@@ -32,5 +32,12 @@
   <%= f.label :content, class:"control-label col-md-3" %>
   <div class="col-md-9">
     <%= f.text_area :content, class:"form-control", id:"content"  %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :user_id, class:"control-label col-md-3" %>
+  <div class="col-md-9">
+    <%= f.select "user_id", User.all.collect {|user| [ user.full_name, user.id ] }, {}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
   </div>
 </div>

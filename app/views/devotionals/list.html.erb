@@ -1,0 +1,43 @@
+<%= title('Devotionals') %>
+
+<div class="content">
+  <div class="container">
+
+    <h2>Listing Devotionals</h2>
+    <hr />
+
+
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Posted At</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @devotionals.each do |devotional| %>
+          <tr>
+            <td><%= devotional.title %></td>
+            <td><%= User.find_by_id(devotional.user_id).full_name %></td>
+            <td><%= devotional.posted_at %></td>
+            <td><%= link_to 'Show', devotional %></td>
+            <td><%= link_to 'Edit', edit_devotional_path(devotional) %></td>
+            <td><%= link_to 'Delete', devotional, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <%= will_paginate %>
+    <%= link_to 'New Devotional', new_devotional_path %>
+  </div>
+</div>
+
+
+
+

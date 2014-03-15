@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    #redirect_to signin_path
+
   end
 
   def create
@@ -9,13 +9,9 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       sign_in user
       redirect_back_or root_url
-      #redirect_to root_url, :notice => "Logged in!"
-      # Sign the user in and redirect to the home page.
-
     else
-      flash[:error] = 'Invalid email/password combination'
-      redirect_to signin_path
-      #redirect_to signin_path, :flash => { :error => "Invalid email/password combination" }
+      flash.now[:error] = 'Invalid email/password combination'
+      render 'new'
     end
   end
 

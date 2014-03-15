@@ -48,6 +48,15 @@
         <li><%= link_to "Gallery", gallery_path %></li>
         <li><%= link_to "Contact Us", contact_path %></li>
         <% if signed_in? %>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Admin <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Users", users_path %></li>
+                <li><%= link_to "Devotionals", list_devotionals_path %></li>
+              </ul>
+            </li>
             <li><%= link_to "Sign out", signout_path %></li>
         <% end %>
       </ul>

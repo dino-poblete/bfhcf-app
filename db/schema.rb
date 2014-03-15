@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140310112859) do
+ActiveRecord::Schema.define(version: 20140315072929) do
 
   create_table "devotionals", force: true do |t|
     t.string   "title"
@@ -20,7 +20,22 @@ ActiveRecord::Schema.define(version: 20140310112859) do
     t.date     "posted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "devotionals", ["user_id", "created_at"], name: "index_devotionals_on_user_id_and_created_at"
+
+  create_table "sermons", force: true do |t|
+    t.string   "title"
+    t.string   "subtitle"
+    t.string   "content"
+    t.date     "posted_at"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sermons", ["user_id", "created_at"], name: "index_sermons_on_user_id_and_created_at"
 
   create_table "users", force: true do |t|
     t.string   "last_name"
@@ -30,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140310112859) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
+    t.boolean  "admin",           default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

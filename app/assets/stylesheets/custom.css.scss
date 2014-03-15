@@ -177,6 +177,16 @@ header{
   background: #e66d1c;
 }
 
+.devotional {
+  ul {
+    li {
+      list-style-type: initial;
+
+    }
+  }
+}
+
+
 .button a{
   background: #1570a6;
 }
@@ -243,17 +253,17 @@ header{
   }
 }
 
-.profile-user-info-striped {
-  .profile-info-name {
+.show-info-striped {
+  .show-info-name {
     color: #fff;
     background-color: #1570a6;
   }
-  .profile-info-value {
+  .show-info-value {
     padding-left: 12px;
   }
 }
 
-.profile-info-name {
+.show-info-name {
   position: absolute;
   width: 110px;
   text-align: right;
@@ -264,12 +274,12 @@ header{
 
 }
 
-.profile-info-value {
+.show-info-value {
   padding: 6px 4px 6px 6px;
   margin-left: 120px;
 }
 
-.profile-info-row {
+.show-info-row {
   position: relative;
   &:first-child {
     .profile-info-name, .profile-info-value {
@@ -279,15 +289,19 @@ header{
 }
 
 @media only screen and (max-width: 480px){
-  .profile-user-info-striped {
-    .profile-info-name {
+  .show-info-striped {
+    .show-info-name {
       position: static;
       width: auto;
       text-align: left;
       padding: 6px 0px 6px 10px;
     }
-    .profile-info-value {
+    .show-info-value {
       margin-left: 10px;
     }
   }
+}
+
+#content {
+  height: 500px;
 }

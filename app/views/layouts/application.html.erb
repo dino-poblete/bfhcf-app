@@ -7,8 +7,12 @@
   <!--<%= javascript_include_tag "html5shim" %>-->
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,300,600' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag "jquery" %>
+  <%= javascript_include_tag "jquery_ujs" %>
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= favicon_link_tag %>
+
 
 </head>
 <body>
@@ -35,6 +39,9 @@
 <%= javascript_include_tag "jquery.flexslider-min", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "easing", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "readmore", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "jquery.Jcrop", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "wysihtml5-0.3.0_rc2", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "bootstrap-wysihtml5-0.0.2", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "custom", "data-turbolinks-track" => true %>
 
 

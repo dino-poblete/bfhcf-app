@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :devotionals
   before_save { self.email = email.downcase }
   before_create :create_remember_token
 
@@ -23,10 +24,16 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   private
 
   def create_remember_token
     self.remember_token = User.hash(User.new_remember_token)
   end
+
+
 
 end
