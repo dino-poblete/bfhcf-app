@@ -1,5 +1,6 @@
 class SermonsController < ApplicationController
-  #before_action :set_sermon, only: [:show, :edit, :update, :destroy]
+  before_action :set_sermon, only: [:display, :show, :edit, :update, :destroy]
+  before_action :signed_in_user, only: [:list, :display, :new, :edit, :update, :destroy]
 
   # GET /sermons
   # GET /sermons.json
@@ -7,10 +8,20 @@ class SermonsController < ApplicationController
     @sermons = Sermon.all
   end
 
+  def list
+    @sermons = Sermon.paginate(page: params[:page])
+  end
+
   # GET /sermons/1
   # GET /sermons/1.json
   def show
+    @sermon = Sermon.find(params[:id])
   end
+
+  def display
+    @user = Sermon.find(params[:id])
+  end
+
 
   # GET /sermons/new
   def new
@@ -19,6 +30,7 @@ class SermonsController < ApplicationController
 
   # GET /sermons/1/edit
   def edit
+    @sermon = Sermon.find(params[:id])
   end
 
   # POST /sermons
@@ -56,16 +68,16 @@ class SermonsController < ApplicationController
   def destroy
     @sermon.destroy
     respond_to do |format|
-      format.html { redirect_to sermons_url }
+      format.html { redirect_to list_sermons_url, notice: 'Sermon deleted.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    #def set_sermon
-    #  @sermon = Sermon.find(params[:id])
-    #end
+    def set_sermon
+      @sermon = Sermon.find(params[:id])
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sermon_params

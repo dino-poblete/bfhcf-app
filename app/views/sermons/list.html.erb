@@ -1,0 +1,43 @@
+<%= title('Sermons') %>
+
+<div class="content">
+  <div class="container">
+
+    <h2>Listing Sermons</h2>
+    <hr />
+
+
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Posted At</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @sermons.each do |sermon| %>
+          <tr>
+            <td><%= sermon.title %></td>
+            <td><%= User.find_by_id(sermon.user_id).full_name %></td>
+            <td><%= sermon.posted_at %></td>
+            <td><%= link_to 'Show', display_sermon_path(sermon) %></td>
+            <td><%= link_to 'Edit', edit_sermon_path(sermon) %></td>
+            <td><%= link_to 'Delete', sermon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <%= will_paginate %>
+    <%= link_to 'New Sermon', new_sermon_path %>
+  </div>
+</div>
+
+
+
+

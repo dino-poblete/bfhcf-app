@@ -1,11 +1,19 @@
 BfhcfApp::Application.routes.draw do
-  resources :sermons
+  resources :events
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :devotionals do
     collection do
       get :list
+    end
+  end
+  resources :sermons do
+    collection do
+      get :list
+    end
+    member do
+      get :display
     end
   end
 
@@ -17,6 +25,7 @@ BfhcfApp::Application.routes.draw do
   #resource :posts
 
   get 'devotionals/list'
+  get 'sermons/list'
 
   root to: 'static_pages#home'
 
@@ -34,7 +43,9 @@ BfhcfApp::Application.routes.draw do
   match '/devotionals/new', :to => 'devotionals#create', :via => :post, :as => :post_devotionals_new
 
   match '/sermons',         to: 'sermons#index',            via: 'get'
-  match '/sermons/show',    to: 'sermons#show',             via: 'get'
+  match '/sermons/new', :to => 'sermons#create', :via => :post, :as => :post_sermons_new
+  #match '/sermons/display/:id', to: 'sermons#display',          via: 'get', :as => :display_sermon_path
+
   match '/ministries',      to: 'static_pages#ministries',  via: 'get'
   match '/events',          to: 'events#index',             via: 'get'
   match '/gallery',         to: 'gallery#index',            via: 'get'

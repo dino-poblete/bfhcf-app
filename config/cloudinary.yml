@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dinopoblete
+  api_key: '468873187895384'
+  api_secret: 7UPzeegd_fAvwXNPzBKI_7M-xw4
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dinopoblete
+  api_key: '468873187895384'
+  api_secret: 7UPzeegd_fAvwXNPzBKI_7M-xw4
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dinopoblete
+  api_key: '468873187895384'
+  api_secret: 7UPzeegd_fAvwXNPzBKI_7M-xw4
+  enhance_image_tag: true
+  static_image_support: false

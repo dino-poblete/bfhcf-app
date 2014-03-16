@@ -72,7 +72,7 @@ class DevotionalsController < ApplicationController
   def destroy
     @devotional.destroy
     respond_to do |format|
-      format.html { redirect_to devotionals_url }
+      format.html { redirect_to list_devotional_url, notice: 'Devotiinal deleted.' }
       format.json { head :no_content }
     end
   end
