@@ -19,9 +19,10 @@ class EventUploader < CarrierWave::Uploader::Base
   #  process :resize_to_fill => [100, 150, :north]
   #end
 
-  #version :thumbnail do
-  #  resize_to_fit(50, 50)
-  #end
+  version :thumbnail do
+    eager
+    process :resize_to_limit => [100, nil]
+  end
 
 
   # Override the directory where uploaded files will be stored.
@@ -61,5 +62,7 @@ class EventUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
+  def public_id
+    return model.title
+  end
 end

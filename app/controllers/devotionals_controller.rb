@@ -1,6 +1,6 @@
 class DevotionalsController < ApplicationController
   before_action :set_devotional, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in_user, only: [:list, :show, :edit, :update, :destroy]
+  before_action :signed_in_user, only: [:list, :new, :show, :edit, :update, :destroy]
 
   # GET /devotionals
   # GET /devotionals.json

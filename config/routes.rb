@@ -1,5 +1,4 @@
 BfhcfApp::Application.routes.draw do
-  resources :events
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
@@ -14,6 +13,11 @@ BfhcfApp::Application.routes.draw do
     end
     member do
       get :display
+    end
+  end
+  resources :events do
+    collection do
+      get :list
     end
   end
 

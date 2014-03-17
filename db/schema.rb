@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140315072929) do
+ActiveRecord::Schema.define(version: 20140316164240) do
 
   create_table "devotionals", force: true do |t|
     t.string   "title"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20140315072929) do
   end
 
   add_index "devotionals", ["user_id", "created_at"], name: "index_devotionals_on_user_id_and_created_at"
+
+  create_table "events", force: true do |t|
+    t.string   "title"
+    t.string   "ministry"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string   "picture"
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sermons", force: true do |t|
     t.string   "title"

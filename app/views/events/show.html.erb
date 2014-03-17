@@ -1,34 +1,73 @@
-<p id="notice"><%= notice %></p>
+<%= title(@event.title) %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+<div class="content">
+  <div class="container">
 
-<p>
-  <strong>Ministry:</strong>
-  <%= @event.ministry %>
-</p>
+    <h2>Show event</h2>
+    <hr />
 
-<p>
-  <strong>Start date:</strong>
-  <%= @event.start_date %>
-</p>
 
-<p>
-  <strong>End date:</strong>
-  <%= @event.end_date %>
-</p>
+    <div class="row event">
+      <div class="col-md-12 col-sm-12">
+        <div class="cwell">
+          <!-- Contact form -->
+          <h5><%= @event.title %></h5>
 
-<p>
-  <strong>Picture:</strong>
-  <%= @event.picture %>
-</p>
+          <% if !flash.empty? %>
+              <div class="alert alert-success"> <%= notice %></div>
+          <% end  %>
 
-<p>
-  <strong>Content:</strong>
-  <%= @event.content %>
-</p>
+          <div class="show-info show-info-striped">
+            <div class="show-info-row">
+              <div class="show-info-name"> Ministry </div>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+              <div class="show-info-value">
+                <span class="editable editable-click" id="email"><%= @event.ministry %></span>
+              </div>
+            </div>
+
+            <div class="show-info-row">
+              <div class="show-info-name"> Start Date </div>
+
+              <div class="show-info-value">
+                <span class="editable editable-click" id="first_name"><%= @event.start_date %></span>
+              </div>
+            </div>
+
+            <div class="show-info-row">
+              <div class="show-info-name"> End Date </div>
+
+              <div class="show-info-value">
+                <span class="editable editable-click" id="first_name"><%= @event.end_date %></span>
+              </div>
+            </div>
+
+            <div class="show-info-row">
+              <div class="show-info-name"> Picture </div>
+
+              <div class="show-info-value">
+                <span class="editable editable-click" id="email"><%= image_tag @event.picture.url, width: "100%", alt: "No Picture Yet" %></span>
+              </div>
+            </div>
+
+            <div class="show-info-row">
+              <div class="show-info-name"> Content </div>
+
+              <div class="show-info-value">
+                <span class="editable editable-click" id="first_name"><%= @event.content.html_safe %></span>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <%= link_to 'Edit', edit_event_path(@event) %> |
+    <%= link_to 'Back', list_events_path %>
+
+
+  </div>
+</div>
