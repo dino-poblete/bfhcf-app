@@ -11,11 +11,11 @@
 
   </div>
 </div>
-<!-- Subtitle -->
+<!-- Ministry -->
 <div class="form-group">
   <%= f.label :ministry, class:"control-label col-md-3" %>
   <div class="col-md-9">
-    <%= f.text_field :ministry, class:"form-control", id:"ministry" %>
+    <%= f.select "ministry", Ministry.all.collect {|ministry| [ ministry.name, ministry.name ] }, {}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
   </div>
 </div>
 

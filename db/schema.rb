@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140316164240) do
+ActiveRecord::Schema.define(version: 20140317034458) do
 
   create_table "devotionals", force: true do |t|
     t.string   "title"
@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(version: 20140316164240) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "ministries", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ministries", ["name"], name: "index_ministries_on_name"
 
   create_table "sermons", force: true do |t|
     t.string   "title"
