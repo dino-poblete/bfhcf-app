@@ -28,6 +28,8 @@ module BfhcfApp
     # config.i18n.default_locale = :de
     I18n.enforce_available_locales = true
 
+    config.exceptions_app = self.routes
+
     config.encoding = "utf-8"
     config.assets.enabled = true
     config.assets.version = '1.0'

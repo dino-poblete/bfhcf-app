@@ -1,0 +1,53 @@
+<%= title(@gallery.title) %>
+
+<div class="content">
+  <div class="container">
+
+    <h2>Show Album</h2>
+    <hr />
+
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="cwell">
+          <!-- Contact form -->
+          <h5><%= @gallery.title %></h5>
+
+          <% if !flash.empty? %>
+              <div class="alert alert-success"> <%= notice %></div>
+          <% end  %>
+
+          <div class="show-info show-info-striped">
+            <div class="show-info-row">
+              <div class="show-info-name"> Content </div>
+
+              <div class="show-info-value">
+                <span class="editable editable-click" id="first_name"><%= @gallery.content.html_safe %></span>
+              </div>
+            </div>
+
+
+            <div class="show-info-row">
+              <div class="show-info-name"> Picture </div>
+
+                  <% if @images.present? %>
+                  <div class="show-info-value gallery">
+                    <% @images.each do |image| %>
+                        <%= link_to image_tag(image.file_url(:square), alt: "No Picture Yet"), image.file_url, class: "prettyphoto", rel: "prettyPhoto["+@gallery.title+"]" %>
+                    <% end %>
+                  </div>
+                  <% else  %>
+                      <div class="show-info-value">
+                        <span class="editable editable-click" id="first_name">No Images to Display</span>
+                      </div>
+                  <% end %>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%= link_to 'Edit', edit_gallery_path(@gallery) %> |
+    <%= link_to 'Back', list_gallery_index_path %>
+
+    </div>
+  </div>

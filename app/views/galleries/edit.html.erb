@@ -1,0 +1,72 @@
+<%= cloudinary_js_config %>
+
+<%= title('Edit Album') %>
+<div class="content">
+  <div class="container">
+
+    <h2>Update Album</h2>
+    <hr />
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="cwell">
+          <!-- Contact form -->
+          <h5>Update Album</h5>
+          <div class="form">
+
+
+            <%= form_for @gallery, html: {class: "form-horizontal"} do |f| %>
+
+
+                <%= render 'edit_form', f: f %>
+
+
+                <div class="form-group">
+                  <!-- Buttons -->
+                  <div class="col-md-9 col-md-offset-3">
+                    <%= f.submit "Update", class:"btn btn-default" %>
+
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :images, class:"control-label col-md-3" %>
+                  <div class="col-md-9">
+            <% end %>
+             <% if @images.present?  %>
+                  <%= form_tag destroy_multiple_images_path, method: :delete do %>
+
+                    <% @images.each do |image| %>
+
+                    <div class="images center">
+                      <%= link_to image_tag(image.file_url(:square), alt: "No Picture Yet"), image.file_url, class: "prettyphoto", rel: "prettyPhoto["+@gallery.title+"]" %>
+                      <div class="caption">
+                        <%= check_box_tag "images[]", image.id, false,  onclick:"checkTick();" %>
+                        <%= hidden_field_tag "gallery_id[]", image.gallery_id %>
+                      </div>
+                    </div>
+
+                    <% end  %>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-9 col-md-offset-3">
+                    <%= submit_tag "Delete selected", class:"btn btn-default", disabled:"disabled" %>
+                  </div>
+                </div>
+                  <% end %>
+
+                <% else %>
+                No Images to Display
+                <% end %>
+                </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <%= link_to 'Back', list_gallery_index_path %>
+
+  </div>
+</div>

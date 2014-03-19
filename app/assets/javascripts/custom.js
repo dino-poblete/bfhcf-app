@@ -144,3 +144,17 @@ $(document).ready(function(){
     });
 
 })
+
+
+
+function checkTick() {
+    if($('input[name="images[]"]').is(":checked"))
+    {
+        $('input[value="Delete selected"]').removeAttr('disabled');
+    }
+
+    else
+    {
+        $('input[value="Delete selected"]').attr('disabled', 'disabled');
+    }
+}

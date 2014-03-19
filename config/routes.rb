@@ -1,5 +1,6 @@
 BfhcfApp::Application.routes.draw do
-
+  get "errors/error_404"
+  get "errors/error_500"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :devotionals do
@@ -20,6 +21,29 @@ BfhcfApp::Application.routes.draw do
       get :list
     end
   end
+  resources :galleries do
+    collection do
+      get :list
+    end
+  end
+  resources :gallery, controller: 'galleries' do
+    collection do
+      get :list
+    end
+  end
+  resources :album, controller: 'galleries' do
+    collection do
+      get :list
+    end
+  end
+
+  resources :images do
+    collection do
+      delete 'destroy_multiple'
+    end
+  end
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -30,6 +54,12 @@ BfhcfApp::Application.routes.draw do
 
   get 'devotionals/list'
   get 'sermons/list'
+
+
+  get '404', :to => 'errors#page_not_found'
+  get '422', :to => 'errors#server_error'
+  get '500', :to => 'errors#server_error'
+
 
   root to: 'static_pages#home'
 
@@ -52,10 +82,11 @@ BfhcfApp::Application.routes.draw do
 
   match '/ministries',      to: 'static_pages#ministries',  via: 'get'
   match '/events',          to: 'events#index',             via: 'get'
-  match '/gallery',         to: 'gallery#index',            via: 'get'
   match '/contact',         to: 'static_pages#contact',     via: 'get'
 
-
+  unless Rails.application.config.consider_all_requests_local
+    match '*not_found', to: 'errors#error_404'
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

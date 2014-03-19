@@ -1,0 +1,34 @@
+<div class="form-group">
+  <div class="col-md-12">
+    <%= render 'shared/error_messages', object: f.object  %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :title, class:"control-label col-md-3" %>
+  <div class="col-md-9">
+    <%= f.text_field :title, class:"form-control", id:"title" %>
+
+  </div>
+</div>
+
+<!-- Content -->
+<div class="form-group">
+  <%= f.label :content, class:"control-label col-md-3" %>
+  <div class="col-md-9">
+    <%= f.text_area :content, class:"form-control", id:"content"  %>
+  </div>
+</div>
+
+<%= f.fields_for :images, @gallery.images.first do |images_field| %>
+
+    <div class="form-group">
+      <%= images_field.label :file, "Choose Photos", class:"control-label col-md-3" %>
+      <div class="col-md-9">
+        <%= images_field.file_field :file, :multiple => true, name: "images[file][]", class:"form-control" %>
+      </div>
+    </div>
+
+<% end %>
+
+
