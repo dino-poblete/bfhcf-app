@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320080821) do
+ActiveRecord::Schema.define(version: 20140320093404) do
 
   create_table "devotionals", force: true do |t|
     t.string   "title"
@@ -31,9 +31,11 @@ ActiveRecord::Schema.define(version: 20140320080821) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.string   "picture"
-    t.text     "content",    limit: 255
+    t.text     "content",         limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "announcement"
+    t.boolean  "display_to_home"
   end
 
   create_table "galleries", force: true do |t|

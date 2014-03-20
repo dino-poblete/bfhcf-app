@@ -10,6 +10,6 @@ class Event < ActiveRecord::Base
   validates :end_date, presence: true
 
   mount_uploader :picture, EventUploader
-
+  mount_uploader :announcement, EventUploader
 
 end

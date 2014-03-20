@@ -50,6 +50,24 @@
               </div>
             </div>
 
+
+            <div class="show-info-row">
+              <div class="show-info-name"> For Announcement </div>
+
+              <div class="show-info-value">
+                <span class="editable editable-click" id="email"><%= image_tag @event.announcement.url, width: "100%", alt: "No Picture Yet" %></span>
+              </div>
+            </div>
+
+            <div class="show-info-row">
+              <div class="show-info-name"> Homepage </div>
+
+              <div class="show-info-value">
+                <span class="editable editable-click" id="display_to_home"><%= @event.display_to_home %></span>
+                <hr/>
+              </div>
+            </div>
+
             <div class="show-info-row">
               <div class="show-info-name"> Content </div>
 

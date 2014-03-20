@@ -43,6 +43,23 @@
   </div>
 </div>
 
+<div class="form-group">
+  <%= f.label "For Announcement (Please use 1920px x 514px picture)", class:"control-label col-md-3" %>
+  <div class="col-md-9">
+
+    <%= image_tag @event.announcement.url, width: "100%", alt: "No Picture Yet" %>
+    <%= f.file_field :announcement, class:"form-control" %>
+    <%= f.hidden_field :announcement_cache %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :show_in_homepage, class:"control-label col-md-3" %>
+  <div class="col-md-9">
+    <%= f.check_box :display_to_home %>
+  </div>
+</div>
+
 <!-- Content -->
 <div class="form-group">
   <%= f.label :content, class:"control-label col-md-3" %>

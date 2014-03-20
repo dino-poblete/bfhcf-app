@@ -15,9 +15,9 @@ class EventUploader < CarrierWave::Uploader::Base
   #process :convert => 'png'
   process :tags => ['post_event']
 
-  #version :standard do
-  #  process :resize_to_fill => [100, 150, :north]
-  #end
+  version :announcement do
+    cloudinary_transformation :width => 1920, :height => 514, :crop => :fill
+  end
 
   version :thumbnail do
     eager
@@ -63,6 +63,6 @@ class EventUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
   def public_id
-    return model.title
+    return model.title.downcase.gsub(" ", "-")+Cloudinary::Utils.random_public_id[0,2]
   end
 end
