@@ -24,7 +24,7 @@
           <tr>
             <td><%= sermon.title %></td>
             <td><%= User.find_by_id(sermon.user_id).full_name %></td>
-            <td><%= sermon.posted_at %></td>
+            <td><%= sermon.posted_at.to_formatted_s(:long) %></td>
             <td><%= link_to 'Show', display_sermon_path(sermon) %></td>
             <td><%= link_to 'Edit', edit_sermon_path(sermon) %></td>
             <td><%= link_to 'Delete', sermon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
