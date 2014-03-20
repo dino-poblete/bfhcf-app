@@ -27,7 +27,8 @@ module BfhcfApp
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     I18n.enforce_available_locales = true
-
+    config.time_zone = 'Singapore'
+    config.active_record.default_timezone = 'Singapore'
     config.exceptions_app = self.routes
 
     config.encoding = "utf-8"

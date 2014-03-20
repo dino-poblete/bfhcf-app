@@ -38,7 +38,7 @@
               <div class="show-info-name"> Devotional Date </div>
 
               <div class="show-info-value">
-                <span class="editable editable-click" id="first_name"><%= @devotional.posted_at %></span>
+                <span class="editable editable-click" id="first_name"><%= @devotional.posted_at.start_date.to_formatted_s(:long) %></span>
               </div>
             </div>
 
