@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140317103648) do
+ActiveRecord::Schema.define(version: 20140320015506) do
 
   create_table "devotionals", force: true do |t|
     t.string   "title"
     t.string   "subtitle"
-    t.string   "content"
+    t.text     "content",    limit: 255
     t.date     "posted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -31,14 +31,14 @@ ActiveRecord::Schema.define(version: 20140317103648) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.string   "picture"
-    t.string   "content"
+    t.text     "content",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "galleries", force: true do |t|
     t.string   "title"
-    t.string   "content"
+    t.text     "content",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20140317103648) do
   create_table "sermons", force: true do |t|
     t.string   "title"
     t.string   "subtitle"
-    t.string   "content"
+    t.text     "content",    limit: 255
     t.date     "posted_at"
     t.integer  "user_id"
     t.datetime "created_at"
