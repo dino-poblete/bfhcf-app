@@ -1,7 +1,7 @@
 <div class="form-group">
-    <div class="col-md-12">
-      <%= render 'shared/error_messages', object: f.object  %>
-    </div>
+  <div class="col-md-12">
+    <%= render 'shared/error_messages', object: f.object  %>
+  </div>
 </div>
 
 <div class="form-group">
@@ -16,13 +16,6 @@
   <%= f.label :subtitle, class:"control-label col-md-3" %>
   <div class="col-md-9">
     <%= f.text_field :subtitle, class:"form-control", id:"subtitle" %>
-  </div>
-</div>
-<!-- Posted Date -->
-<div class="form-group">
-  <%= f.label :devotional_date, class:"control-label col-md-3" %>
-  <div class="col-md-9">
-    <%= f.text_field :posted_at, class:"form-control", id:"posted_at", placeholder: 'yyyy-mm-dd'  %>
   </div>
 </div>
 <!-- Content -->

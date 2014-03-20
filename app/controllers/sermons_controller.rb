@@ -40,8 +40,8 @@ class SermonsController < ApplicationController
 
     respond_to do |format|
       if @sermon.save
-        format.html { redirect_to @sermon, notice: 'Sermon was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @sermon }
+        format.html { redirect_to display_sermon_path(@sermon), notice: 'Sermon was successfully created.' }
+        format.json { render action: 'display', status: :created, location: @sermon }
       else
         format.html { render action: 'new' }
         format.json { render json: @sermon.errors, status: :unprocessable_entity }

@@ -56,6 +56,50 @@
     <div class="col-md-12">
       <h3 class="bg-blue">Senior Pastor's Corner</h3>
       <div class="bor"></div>
+      <% if signed_in? %>
+
+          <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                    Add New Post
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse">
+                <div class="">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                      <div class="cwell">
+                        <!-- Contact form -->
+                        <div class="form">
+
+
+                          <%= form_for @post, html: {class: "form-horizontal"} do |f| %>
+
+
+                              <%= render 'post_form', f: f %>
+
+
+                              <div class="form-group">
+                                <!-- Buttons -->
+                                <div class="col-md-9 col-md-offset-3">
+                                  <%= f.submit "Create Post", class:"btn btn-default" %>
+                                  <button type="reset" class="btn btn-default">Reset</button>
+                                </div>
+                              </div>
+                          <% end %>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
       <!-- Blog Posts -->
       <div class="row">
         <div class="col-md-12 col-sm-12">
@@ -133,7 +177,54 @@
     <div class="col-md-12">
       <h3 class="bg-orange">God's Word for Today</h3>
       <div class="bor"></div>
-      <!-- Blog Posts -->
+
+      <% if signed_in? %>
+
+          <div class="panel-group" id="accordion2">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                    Add New Devotional
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                      <div class="cwell">
+                        <!-- Contact form -->
+                        <div class="form">
+                          <%= form_for @devotional, html: {class: "form-horizontal"} do |f| %>
+
+
+                              <%= render 'devotionals/form', f: f %>
+
+
+                              <div class="form-group">
+                                <!-- Buttons -->
+                                <div class="col-md-9 col-md-offset-3">
+                                  <%= f.submit "Create Devotional", class:"btn btn-default" %>
+                                  <button type="reset" class="btn btn-default">Reset</button>
+                                </div>
+                              </div>
+                          <% end %>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+      <% end %>
+
+
       <div class="row">
         <div class="col-md-12 col-sm-12">
           <div class="posts">

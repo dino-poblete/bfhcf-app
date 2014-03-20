@@ -177,6 +177,20 @@ header{
   background: #e66d1c;
 }
 
+.home {
+
+  #accordion, #accordion2 {
+
+    margin-bottom: 20px;
+
+    .cwell {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+  }
+
+}
+
 .devotional {
   ul {
     li {
@@ -315,3 +329,8 @@ header{
   float: left;
   margin-bottom: 20px;
 }
+
+.pagination {
+  @extend .pull-right;
+}
+
