@@ -30,7 +30,7 @@
               <div class="show-info-name"> Start Date </div>
 
               <div class="show-info-value">
-                <span class="editable editable-click" id="first_name"><%= @event.start_date.to_formatted_s(:long)  %></span>
+                <span class="editable editable-click" id="first_name"><%= format_date(@event.start_date) %></span>
               </div>
             </div>
 
@@ -38,7 +38,7 @@
               <div class="show-info-name"> End Date </div>
 
               <div class="show-info-value">
-                <span class="editable editable-click" id="first_name"><%= @event.end_date.to_formatted_s(:long)  %></span>
+                <span class="editable editable-click" id="first_name"><%= format_date(@event.end_date)  %></span>
               </div>
             </div>
 

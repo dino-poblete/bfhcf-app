@@ -44,7 +44,7 @@ module WillPaginate
         unless page == current_page
           link(page, page, :rel => rel_value(page))
         else
-          tag(:em, page, :class => 'current')
+          tag(:li, (tag(:a, page, :class => 'current') ) )
         end
       end
       
@@ -67,12 +67,12 @@ module WillPaginate
         if page
           link(text, page, :class => classname)
         else
-          tag(:span, text, :class => classname + ' disabled')
+          tag(:li, (tag(:a, text, :class => classname + ' disabled') ) )
         end
       end
       
       def html_container(html)
-        tag(:div, html, container_attributes)
+        tag(:ul, html, container_attributes)
       end
       
       # Returns URL params for +page_link_or_span+, taking the current GET params
@@ -93,7 +93,7 @@ module WillPaginate
           target = url(target)
         end
         attributes[:href] = target
-        tag(:a, text, attributes)
+        tag(:li, (tag(:a, text, attributes) ) )
       end
       
       def tag(name, value, attributes = {})
