@@ -1,6 +1,5 @@
 BfhcfApp::Application.routes.draw do
-  get "errors/error_404"
-  get "errors/error_500"
+  
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :devotionals do
@@ -78,15 +77,12 @@ BfhcfApp::Application.routes.draw do
 
   match '/sermons',         to: 'sermons#index',            via: 'get'
   match '/sermons/new', :to => 'sermons#create', :via => :post, :as => :post_sermons_new
-  #match '/sermons/display/:id', to: 'sermons#display',          via: 'get', :as => :display_sermon_path
+
 
   match '/ministries',      to: 'static_pages#ministries',  via: 'get'
   match '/events',          to: 'events#index',             via: 'get'
   match '/contact',         to: 'static_pages#contact',     via: 'get'
 
-  unless Rails.application.config.consider_all_requests_local
-    match '*not_found', to: 'errors#error_404'
-  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
