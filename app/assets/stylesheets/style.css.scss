@@ -1572,10 +1572,12 @@ ul.hover-block li img {
 	margin-top: 20px;
 }
 
-.content .ministries ul{
-	list-style-type: none;
-	margin-left: 0px;
+.content .ministries, .sidebar {
+  ul, {
+    list-style-type: none;
+    margin-left: 0px;
     padding-left:0px;
+  }
 }
 
 .content ul li{
@@ -2059,8 +2061,10 @@ footer .copy{
 	margin-top: 10px;
 }
 
-.sermon .form-group{
-  margin-bottom: 15px !important;
+.sermon, .devotional {
+  .form-group{
+    margin-bottom: 15px !important;
+  }
 }
 
 /* Events */

@@ -24,11 +24,7 @@
       <% @users.each do |user| %>
           <tr>
             <td style="width: 50px;" class="text-center">
-              <% if user.avatar.blank? %>
-                  <%= image_tag "people/default.jpg", width: "50px", alt: "No Avatar Yet" %>
-              <% else %>
-                  <%= image_tag user.avatar.url(:small), alt: "No Avatar Yet" %>
-              <% end  %>
+              <%= show_user_avatar_small(user) %>
 
             </td>
             <td><%= user.last_name %></td>

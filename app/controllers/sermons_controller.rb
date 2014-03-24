@@ -5,7 +5,17 @@ class SermonsController < ApplicationController
   # GET /sermons
   # GET /sermons.json
   def index
-    @sermons = Sermon.all
+
+    todayMonth = Time.now.strftime("%Y-%m")
+    searchDate = params[:searchDate]
+    if searchDate.blank?
+      @sermons_date = Time.now
+      @sermons = Sermon.where("strftime('%Y-%m', posted_at) = ?", todayMonth)
+    else
+      @sermons_date = "#{searchDate}-01".to_date
+      @sermons = Sermon.where("strftime('%Y-%m', posted_at) = ?", searchDate)
+    end
+
   end
 
   def list
@@ -16,10 +26,20 @@ class SermonsController < ApplicationController
   # GET /sermons/1.json
   def show
     @sermon = Sermon.find(params[:id])
+
+    todayMonth = Time.now.strftime("%Y-%m")
+    searchDate = params[:searchDate]
+    if searchDate.blank?
+      @sermons_date = Time.now
+      @sermons = Sermon.where("strftime('%Y-%m', posted_at) = ?", todayMonth)
+    else
+      @sermons_date = "#{searchDate}-01".to_date
+      @sermons = Sermon.where("strftime('%Y-%m', posted_at) = ?", searchDate)
+    end
   end
 
   def display
-    @user = Sermon.find(params[:id])
+    @sermon = Sermon.find(params[:id])
   end
 
 

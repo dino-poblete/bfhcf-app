@@ -1,11 +1,29 @@
 class DevotionalsController < ApplicationController
   before_action :set_devotional, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in_user, only: [:list, :new, :show, :edit, :update, :destroy]
+  before_action :signed_in_user, only: [:list, :display, :new, :edit, :update, :destroy]
 
   # GET /devotionals
   # GET /devotionals.json
   def index
-    @devotionals = Devotional.all
+    today_date = Time.now.strftime("%Y-%m-%d")
+    latest_devotional = Devotional.find_by_posted_at(today_date)
+    if latest_devotional.blank?
+      previous_devotional = Devotional.where("posted_at < ?", today_date)
+      @devotional = previous_devotional.first
+    else
+      @devotional = latest_devotional
+    end
+
+    todayMonth = Time.now.strftime("%Y-%m")
+    searchDate = params[:searchDate]
+    if searchDate.blank?
+      @devotionals_date = Time.now
+      @devotionals = Devotional.where("strftime('%Y-%m', posted_at) = ?", todayMonth)
+    else
+      @devotionals_date = "#{searchDate}-01".to_date
+      @devotionals = Devotional.where("strftime('%Y-%m', posted_at) = ?", searchDate)
+    end
+
   end
 
 
@@ -17,6 +35,20 @@ class DevotionalsController < ApplicationController
   # GET /devotionals/1.json
   def show
     @devotional = Devotional.find(params[:id])
+    todayMonth = Time.now.strftime("%Y-%m")
+    searchDate = params[:searchDate]
+    if searchDate.blank?
+      @devotionals_date = Time.now
+      @devotionals = Devotional.where("strftime('%Y-%m', posted_at) = ?", todayMonth)
+    else
+      @devotionals_date = "#{searchDate}-01".to_date
+      @devotionals = Devotional.where("strftime('%Y-%m', posted_at) = ?", searchDate)
+    end
+  end
+
+  def display
+    @devotional = Devotional.find(params[:id])
+
   end
 
   # GET /devotionals/new

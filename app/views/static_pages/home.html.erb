@@ -7,21 +7,20 @@
     <div class="row no-margin">
       <div class="col-md-12 no-padd">
         <div class="flexslider">
+
           <ul class="slides">
 
-            <li>
-              <div class="flex-center">
-                <%= image_tag "announcements/theme_feb2014.jpg" %>
-              </div>
+            <% @events.each do |event| %>
 
-            </li>
-            <li>
-              <div class="flex-center">
-                <%= image_tag "announcements/run.jpg" %>
-              </div>
+                <% if event.display_to_home %>
+                    <li>
+                      <div class="flex-center">
+                        <%= link_to image_tag(event.announcement.url(:announcement), alt: "No Picture Yet"), events_path %>
+                      </div>
+                    </li>
+                <% end %>
 
-            </li>
-
+            <% end  %>
           </ul>
         </div>
       </div>
@@ -79,7 +78,7 @@
                           <%= form_for @post, html: {class: "form-horizontal"} do |f| %>
 
 
-                              <%= render 'post_form', f: f %>
+                              <%= render 'posts/form', f: f %>
 
 
                               <div class="form-group">
@@ -114,32 +113,22 @@
 
                 <div class="col-md-2 col-sm-2">
                   <div class="bthumb2">
-                    <a href="#"><%= image_tag("people/default.jpg") %></a>
+                    <a href="#">
+                      <%= show_avatar(@latest_post) %>
+                    </a>
                   </div>
                 </div>
                 <div class="col-md-10 col-sm-10">
-                  <h5>Loneliness, Nostalgia, Lonesomeness</h5>
-                  <h6>Subheader here</h6>
+                  <h5><%= @latest_post.title %></h5>
+                  <h6><%= @latest_post.subtitle %></h6>
                   <div class="meta">
-                    <i class="fa fa-calendar"></i> 02-14-2014 <i class="fa fa-user"></i> Pastor Doy Castillo
+                    <i class="fa fa-calendar"></i> <%= format_date_number(@latest_post.created_at)  %><i class="fa fa-user"></i> <%= User.find_by_id(@latest_post.user_id).full_name %>
                   </div>
                 </div>
               </div>
               <div class="home-post-content">
                 <!--<p>Introduction:</p>-->
-                <p>Loneliness is not nostalgia, which is a mixed feeling of pain and pleasure for things or events of the past. Loneliness is the refusal to find hope in the future and contentment at the present.</p>
-
-                <p>Loneliness is not even sadness although these are, to some extent, alike in both content and impact. Sadness is about a temporary loss while loneliness is about a permanent loss.</p>
-
-                <p>The distinction between sadness and loneliness is that sadness tends to be temporary and short-lived while loneliness tends to be longer lasting and more damaging.</p>
-
-                <p>Loneliness is not even lonesomeness. Loneliness is oftentimes intentionally hidden while lonesomeness is usually made visible by a dejected face and a depressed behavior.</p>
-
-                <p>Lonesomeness triggers a forlorn attitude and appearance while loneliness may be expertly hidden from public view while a person goes about his daily life without his skills hampered by the turmoil inside.</p>
-
-                <p>How would you know if what you are going through is loneliness? If you recall something in your past and some strong feeling is generated, more likely it is Nostalgia.</p>
-
-                <p>If you start concluding that you have no one to call your own and there is no one who calls you his/her own, then you are lonely. Be careful. Loneliness can remove from you any sense of life even while you are alive.</p>
+                <%= @latest_post.content.html_safe %>
               </div>
             </div>
 
@@ -238,106 +227,22 @@
 
                 <div class="col-md-2 col-sm-2">
                   <div class="bthumb2">
-                    <a href="#"><%= image_tag("people/default.jpg") %></a>
+                    <a href="#">
+                      <%= show_avatar(@latest_devotional) %>
+                    </a>
                   </div>
                 </div>
                 <div class="col-md-10 col-sm-10">
-                  <a href="/devotionals"><h5>MOST CHRISTIANS HAVE MORE OF FAITH AND HOPE THAN LOVE. Are you one of those Christians?</h5></a>
-                  <h6>1 Cor 13:1-13</h6>
+                  <a href="/devotionals"><h5><%= @latest_devotional.title %></h5></a>
+                  <h6><%= @latest_devotional.subtitle %></h6>
                   <!-- Meta details -->
                   <div class="meta">
-                    <i class="fa fa-calendar"></i> 02-14-2014 <i class="fa fa-user"></i> Pastor Doy Castillo
+                    <i class="fa fa-calendar"></i> <%= format_date_number(@latest_devotional.posted_at)  %> <i class="fa fa-user"></i> <%= User.find_by_id(@latest_devotional.user_id).full_name %>
                   </div>
                 </div>
               </div>
               <div class="home-post-content">
-                <!--<p>Introduction:</p>-->
-                <p>Paul makes a rather startling conclusion in 1 Corinthians 13: He is saying that one may have the great spirituals gifts such as: The gift of being able to speak the tongues of men as well as of angels; the gift of prophecy that can look into mysteries and knowledge and the gift of faith that can move mountains, or even the rare gift of martyrdom. Paul says, with all these, if you do not have love, you still are nothing.</p>
-
-                <p>Today is considered by many as araw ng mga puso. In my case it was araw ng opera ng puso because I had my first heart by-pass surgery on Feb. 14 seventeen years ago. Just a thought: Is it possible for us to have more of faith, more of hope and less of love or the other way around. So, let me ask you, which of these 3 do you have more and which one do have less?</p>
-
-                <p>To help us make that diagnosis, let’s see the nature and importance of each one both a gift of God and as a virtue for our everyday life. You ready? Paul say, that if you remove everything else, only 3 will remain: FAITH , HOPE AND LOVE. He is not saying that it is possible to remove anything but all these gifts can be merged with and can identified with one of these 3. FAITH HOPE AND LOVE, BUT THE GREATEST IS LOVE. How do we understand FAITH, HOPE AND LOVE.</p>
-                <p>Verse 13 does not explain clearly what this faith is. It seems to be different faith that what is discussed in verse 2. Neither does it explain clearly what this hope is. But, we are blessed in that these words are found in many parts of the New Testament and our explanation will come from their meaning based on etymology and usage.</p>
-
-                <ul>
-                  <li>
-                    I- THE MOST PROMINENT MEANING OF FAITH (PISTIS) IS FIRM PERSUASION AND UNSHAKEABLE CONVICTION (PISTIS)
-
-                    <ol>
-                      <li>
-                        IN RELATION TO GOD- Trust and complete dependence- Mark 11:22. And Jesus answered saying to them, "Have faith in God. NASB
-                      </li>
-                      <li>
-                        IN RELATION TO THE FUTURE- Firm conviction that the future will be alright. Heb 11:1. Now faith is the assurance of things hoped for, the conviction of things not seen. NASB
-                      </li>
-                      <li>
-                        IN RELATION TO WHAT WE BELIEVE- The set of teachings we have accepted as our guidelines for our lives. Acts 6:7. And the word of God kept on spreading; and the number of the disciples continued to increase greatly in Jerusalem, and a great many of the priests were becoming obedient to the faith. NASB. This is the set of teachings or doctrines that have been entrusted to the people of God to be cherished and defended if necessary. Jude 3. Beloved, while I was making every effort to write you about our common salvation, I felt the necessity to write to you appealing that you contend earnestly for the faith which was once for all delivered to the saints. NASB
-                      </li>
-                    </ol>
-                    <p>
-                      Now check if you have this faith:
-                      <br/>
-                      Firm trust in and dependence on God. ___
-                      <br/>
-                      Firm conviction that the future will be alright in God’s hand
-                      <br/>
-                      Firm conviction of the correctness and value of the teachings we have come to accept and treasure.
-                      <br/>
-
-                    </p>
-                    <p>(Some people have faith only in 1- they are very anxious. Some have faith in 1 and 2. But they do not know their doctrines. Some have 1,2,3). They have faith in the full sense of the word.</p>
-                  </li>
-
-                  <li>
-                    II- THE MOST PROMINENT MEANING OF THE WORD HOPE (ELPIS) IS FIRM AND HAPPY ANTICIPATION OF SOMETHING GOOD IN THE FUTURE.
-
-                    <p> Heb 11:1. Now faith is the assurance of things hoped for, the conviction of things not seen. </p>
-                    <p> Faith (as firm conviction of the teachings) defines what that good in the future is. Hope is the anticipation generated and sustained by faith. Faith declares: I KNOW FOR CERTAIN THAT GOD WILL GIVE ME SOMETHING WONDERFUL IN THE FUTURE. Hope will specify what that good is and a happy anticipation fills the heart of the person. HOPE: TO HAVE AN OPTIMISTIC VIEW OF THE FUTURE EVEN IF REALITY SAYS OTHERWISE</p>
-                    <p> Rom 8:24-25
-                      24 For in hope we have been saved, but hope that is seen is not hope; for why does one also hope for what he sees? 25 But if we hope for what we do not see, with perseverance we wait eagerly for it. NASB
-                      Hope focuses on something good that we still have to have.
-                      Hope encourages perseverance.
-                    </p>
-
-                  </li>
-
-                  <li>
-                    III- THE MOST PROMINENT MEANING OF THE WORD LOVE (AGAPE) IS FIRM, DEEP AND CONSTANT INTEREST IN THE HAPPINESS SOMEONE.
-
-                    <p>
-                      1 Corinthians 13:4 Love is patient, love is kind, and is not jealous; love does not brag and is not arrogant, 5 does not act unbecomingly; it does not seek its own, is not provoked, does not take into account a wrong suffered, 6 does not rejoice in unrighteousness, but rejoices with the truth; 7 bears all things, believes all things, hopes all things, endures all things. 8 Love never fails; but if there are gifts of prophecy, they will be done away; if there are tongues, they will cease; if there is knowledge, it will be done away.
-                    </p>
-                    <ul>
-                      <li>
-                        <p>God is love- 1 John 4:8: The one who does not love does not know God, for God is love.</p>
-                      </li>
-                      <li>
-                        <p>God who is love is in us and therefore we are expected to love as He loves: 1 John 4:16 And we have come to know and have believed the love which God has for us. God is love, and the one who abides in love abides in God, and God abides in him.</p>
-                      </li>
-                      <li>
-                        <p>God’s love is us is to manifested in the following spiritual characteristics:</p>
-                        <ul>
-                          <li>
-                            When provoked- patience<br/>
-                            When confronted with a need- kindness<br/>
-                            When not having what others have- gratitude instead of envy<br/>
-                            When blessed with what others do not have- does not boast<br/>
-                            When dealing with others of less importance- not rude<br/>
-                          </li>
-
-                          <li>
-                            When dealing with needs – not self-seeking<br/>
-                            When dealing with frustrations- not easily angered<br/>
-                            When dealing with offenders- not keeping a record of wrongs<br/>
-                            When seeing someone affected by evil- grieves and does not rejoice<br/>
-                            When confronted with a choice: protects, trusts, hopes, perseveres<br/>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-
-                  </li>
-                </ul>
+                <%= @latest_devotional.content.html_safe %>
               </div>
             </div>
 

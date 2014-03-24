@@ -7,6 +7,9 @@ BfhcfApp::Application.routes.draw do
     collection do
       get :list
     end
+    member do
+      get :display
+    end
   end
   resources :sermons do
     collection do

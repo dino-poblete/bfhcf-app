@@ -1,4 +1,67 @@
-<p id="notice"><%= notice %></p>
+<%= title(@post.title) %>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<div class="content">
+  <div class="container">
+
+    <h2>Show Post</h2>
+    <hr />
+
+
+    <div class="row post">
+      <div class="col-md-12 col-sm-12">
+        <div class="cwell">
+          <!-- Contact form -->
+          <h5><%= @post.title %></h5>
+
+          <% if !flash.empty? %>
+              <div class="alert alert-success"> <%= notice %></div>
+          <% end  %>
+
+          <div class="show-info show-info-striped">
+            <div class="show-info-row">
+              <div class="show-info-name"> Subtitle </div>
+
+              <div class="show-info-value">
+                <span class="editable editable-click" id="email"><%= @post.subtitle %></span>
+              </div>
+            </div>
+
+            <div class="show-info-row">
+              <div class="show-info-name"> Author </div>
+
+              <div class="show-info-value">
+                <span class="editable editable-click" id="last_name"><%= User.find_by_id(@post.user_id).full_name %></span>
+              </div>
+            </div>
+
+            <div class="show-info-row">
+              <div class="show-info-name"> Created Date </div>
+
+              <div class="show-info-value">
+                <span class="editable editable-click" id="first_name"><%= format_short_date(@post.created_at) %></span>
+              </div>
+            </div>
+
+            <div class="show-info-row">
+              <div class="show-info-name"> Content </div>
+
+              <div class="show-info-value">
+                <span class="editable editable-click" id="first_name"><%= @post.content.html_safe %></span>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <%= link_to 'Edit', edit_post_path(@post) %> |
+    <%= link_to 'Back', posts_path %>
+
+
+  </div>
+</div>
+
+

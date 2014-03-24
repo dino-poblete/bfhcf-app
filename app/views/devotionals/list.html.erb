@@ -26,7 +26,7 @@
             <td><%= devotional.title %></td>
             <td><%= User.find_by_id(devotional.user_id).full_name %></td>
             <td><%= format_short_date(devotional.posted_at) %></td>
-            <td><%= link_to 'Show', devotional %></td>
+            <td><%= link_to 'Show', display_devotional_path(devotional) %></td>
             <td><%= link_to 'Edit', edit_devotional_path(devotional) %></td>
             <td><%= link_to 'Delete', devotional, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>

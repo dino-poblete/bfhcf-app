@@ -105,20 +105,20 @@ $('.entry .home-post-content').readmore({
 });
 
 $(function() {
-    $( "#devotional-datepicker" ).datepicker({
-        dateFormat: 'yy-mm-dd'
-    });
+//    $( "#devotional-datepicker" ).datepicker({
+//        dateFormat: 'yy-mm-dd'
+//    });
     $( "#posted_at" ).datepicker({
         dateFormat: 'yy-mm-dd'
     });
 });
 
 $(function() {
-    $('#sermon-datepicker').datepicker( {
+    $('#month-datepicker').datepicker( {
         changeMonth: true,
         changeYear: true,
         showButtonPanel: true,
-        dateFormat: 'MM yy',
+        dateFormat: 'yy-mm',
         onClose: function(dateText, inst) {
             var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
             var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
@@ -143,6 +143,23 @@ $(document).ready(function(){
         });
     });
 
+    $("#gallery-list").mixItUp({
+        animation: {
+            easing: 'ease-in-out',
+            effects: 'fade scale'
+        },
+        load: {
+            filter: '.none'
+        },
+        callbacks: {
+            onMixLoad: function() {
+                $("img.lazy").lazyload({
+                    effect: "fadeIn"
+                });
+            }
+        }
+    })
+
 })
 
 
@@ -158,3 +175,5 @@ function checkTick() {
         $('input[value="Delete selected"]').attr('disabled', 'disabled');
     }
 }
+
+

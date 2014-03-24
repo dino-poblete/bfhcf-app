@@ -28,19 +28,22 @@
               <h4>Choose Month</h4>
               <form class="form-inline">
                 <div class="form-group">
-                  <input type="text" value="" name="s" id="sermon-datepicker" class="form-control" placeholder="Enter month..."/>
+                  <input type="text" value="" name="searchDate" id="month-datepicker" class="form-control" placeholder="Enter month..."/>
                 </div>
                 <button type="submit" class="btn btn-default">Search</button>
               </form>
             </div>
             <div class="widget">
-              <h4>February 2014 Sermons</h4>
+              <h4><%= format_fullmonth_year(@sermons_date) %> Sermons</h4>
               <ul>
-                <li><a href="#">Sed eu leo orci, condimentum gravida metus</a></li>
-                <li><a href="#">Etiam at nulla ipsum, in rhoncus purus</a></li>
-                <li><a href="#">Fusce vel magna faucibus felis dapibus facilisis</a></li>
-                <li><a href="#">Vivamus scelerisque dui in massa</a></li>
-                <li><a href="#">Pellentesque eget adipiscing dui semper</a></li>
+                <% if @sermons.empty? %>
+                    No Sermons
+                <% end %>
+                <% @sermons.each do |sermon| %>
+                    <li>
+                      <%= link_to format_date_number(sermon.posted_at)+' | '+sermon.title, sermon  %>
+                    </li>
+                <% end %>
               </ul>
             </div>
           </div>
@@ -50,113 +53,28 @@
         <div class="col-md-8 col-sm-8">
           <div class="posts">
 
-            <!-- Each posts should be enclosed inside "entry" class" -->
-            <!-- Post one -->
-            <div class="entry">
-              <h2><a href="#">Sed justo scelerisque ut consectetur</a></h2>
 
-              <!-- Meta details -->
-              <div class="meta">
-                <i class="fa fa-calendar"></i> 26-2-2012 <i class="fa fa-user"></i> Admin </span>
-              </div>
+            <% @sermons.each do |sermon| %>
+                <div class="entry">
+                  <h2><%= link_to sermon.title, sermon %></h2>
+                  <h5><%= sermon.subtitle %></h5>
 
-              <!-- Thumbnail -->
-              <div class="bthumb2">
-                <a href="#"><%= image_tag "people/default.jpg" %></a>
-              </div>
+                  <!-- Meta details -->
+                  <div class="meta">
+                    <i class="fa fa-calendar"></i> <%= format_date_number(sermon.posted_at) %> <i class="fa fa-user"></i> <%= User.find_by_id(sermon.user_id).full_name %> </span>
+                  </div>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate eros nec odio egestas in dictum nisi vehicula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse porttitor luctus imperdiet.</p>
-              <div class="button"><%= link_to "Read More...", "#" %></div>
-              <div class="clearfix"></div>
-            </div>
+                  <!-- Thumbnail -->
+                  <div class="bthumb2">
+                    <a href="#"><%= show_avatar(sermon) %></a>
+                  </div>
 
-            <!-- Post 2 -->
-            <div class="entry">
-              <h2><a href="#">Ut commodo ullamcorper risus nec mattis</a></h2>
+                  <%= sermon.content[0..255].html_safe+"..."%>
+                  <div class="button"><%= link_to "Read More...", sermon  %></div>
+                  <div class="clearfix"></div>
+                </div>
 
-              <!-- Meta details -->
-              <div class="meta">
-                <i class="fa fa-calendar"></i> 26-2-2012 <i class="fa fa-user"></i> Admin </span>
-              </div>
-
-              <!-- Thumbnail -->
-              <div class="bthumb2">
-                <a href="#"><%= image_tag "people/default.jpg" %></a>
-              </div>
-
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate eros nec odio egestas in dictum nisi vehicula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse porttitor luctus imperdiet.</p>
-              <div class="button"><a href="#">Read More...</a></div>
-              <div class="clearfix"></div>
-            </div>
-
-            <!-- Post 3 -->
-            <div class="entry">
-              <h2><a href="#">Ut commodo ullamcorper risus nec mattis</a></h2>
-
-              <!-- Meta details -->
-              <div class="meta">
-                <i class="fa fa-calendar"></i> 26-2-2012 <i class="fa fa-user"></i> Admin </span>
-              </div>
-
-              <!-- Thumbnail -->
-              <div class="bthumb2">
-                <a href="#"><%= image_tag "people/default.jpg" %></a>
-              </div>
-
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate eros nec odio egestas in dictum nisi vehicula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse porttitor luctus imperdiet.</p>
-              <div class="button"><a href="#">Read More...</a></div>
-              <div class="clearfix"></div>
-            </div>
-
-            <!-- Post 4 -->
-            <div class="entry">
-              <h2><a href="#">Ut commodo ullamcorper risus nec mattis</a></h2>
-
-              <!-- Meta details -->
-              <div class="meta">
-                <i class="fa fa-calendar"></i> 26-2-2012 <i class="fa fa-user"></i> Admin </span>
-              </div>
-
-              <!-- Thumbnail -->
-              <div class="bthumb2">
-                <a href="#"><%= image_tag "people/default.jpg" %></a>
-              </div>
-
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate eros nec odio egestas in dictum nisi vehicula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse porttitor luctus imperdiet.</p>
-              <div class="button"><a href="#">Read More...</a></div>
-              <div class="clearfix"></div>
-            </div>
-
-            <!-- Post 5 -->
-            <div class="entry">
-              <h2><a href="#">Ut commodo ullamcorper risus nec mattis</a></h2>
-
-              <!-- Meta details -->
-              <div class="meta">
-                <i class="fa fa-calendar"></i> 26-2-2012 <i class="fa fa-user"></i> Admin </span>
-              </div>
-
-              <!-- Thumbnail -->
-              <div class="bthumb2">
-                <a href="#"><%= image_tag "people/default.jpg" %></a>
-              </div>
-
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate eros nec odio egestas in dictum nisi vehicula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse porttitor luctus imperdiet.</p>
-              <div class="button"><a href="#">Read More...</a></div>
-              <div class="clearfix"></div>
-            </div>
-
-            <!-- Pagination -->
-            <!--<div class="paging">-->
-              <!--<span class='current'>1</span>-->
-              <!--<a href='#'>2</a>-->
-              <!--<span class="dots">&hellip;</span>-->
-              <!--<a href='#'>6</a>-->
-              <!--<a href="#">Next</a>-->
-            <!--</div>-->
-
-            <!--<div class="clearfix"></div>-->
-
+            <% end %>
           </div>
         </div>
 

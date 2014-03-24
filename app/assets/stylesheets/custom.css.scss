@@ -192,12 +192,15 @@ header{
 }
 
 .devotional {
-  ul {
-    li {
-      list-style-type: initial;
+  .posts {
+    ul {
+      li {
+        list-style-type: initial;
 
+      }
     }
   }
+
 }
 
 
@@ -334,3 +337,12 @@ header{
   @extend .pull-right;
 }
 
+#gallery-list .mix{
+  display: none;
+}
+
+.albums a {
+  &:hover {
+    cursor: pointer;
+  }
+}

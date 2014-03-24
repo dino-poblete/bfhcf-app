@@ -63,6 +63,6 @@ class EventUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
   def public_id
-    return model.title.downcase.gsub(" ", "-")+Cloudinary::Utils.random_public_id[0,2]
+    return model.title.downcase.gsub(" ", "-")+'-'+Cloudinary::Utils.random_public_id[0,2]
   end
 end

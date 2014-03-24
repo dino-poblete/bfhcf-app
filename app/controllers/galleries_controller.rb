@@ -4,7 +4,10 @@ class GalleriesController < ApplicationController
   # GET /galleries
   # GET /galleries.json
   def index
-    @galleries = Gallery.all
+    todayYear = Time.now.strftime("%Y")
+
+    @albums_date = Time.now
+    @albums = Gallery.where("strftime('%Y', created_at) = ?", todayYear)
   end
 
   def list

@@ -17,7 +17,19 @@ module ApplicationHelper
     date.strftime("%B %d, %Y %I:%M%p")
   end
 
+  def format_fullmonth_year(date)
+    date.strftime("%B %Y")
+  end
+
   def format_short_date(date)
     date.strftime("%B %d, %Y")
+  end
+
+  def format_date_number(date)
+    date.strftime("%m-%d-%Y")
+  end
+
+  def format_date_time(date)
+    date.strftime("%l:%m %p")
   end
 end

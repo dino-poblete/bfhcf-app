@@ -1,0 +1,67 @@
+<%= title(@devotional.title) %>
+
+<div class="content">
+  <div class="container">
+
+    <h2>Show Devotional</h2>
+    <hr />
+
+
+    <div class="row devotional">
+      <div class="col-md-12 col-sm-12">
+        <div class="cwell">
+          <!-- Contact form -->
+          <h5><%= @devotional.title %></h5>
+
+          <% if !flash.empty? %>
+              <div class="alert alert-success"> <%= notice %></div>
+          <% end  %>
+
+          <div class="show-info show-info-striped">
+            <div class="show-info-row">
+              <div class="show-info-name"> Subtitle </div>
+
+              <div class="show-info-value">
+                <span class="editable editable-click" id="email"><%= @devotional.subtitle %></span>
+              </div>
+            </div>
+
+            <div class="show-info-row">
+              <div class="show-info-name"> Author </div>
+
+              <div class="show-info-value">
+                <span class="editable editable-click" id="last_name"><%= User.find_by_id(@devotional.user_id).full_name %></span>
+              </div>
+            </div>
+
+            <div class="show-info-row">
+              <div class="show-info-name"> Date </div>
+
+              <div class="show-info-value">
+                <span class="editable editable-click" id="first_name"><%= format_short_date(@devotional.posted_at) %></span>
+              </div>
+            </div>
+
+            <div class="show-info-row">
+              <div class="show-info-name"> Content </div>
+
+              <div class="show-info-value">
+                <span class="editable editable-click" id="first_name"><%= @devotional.content.html_safe %></span>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <%= link_to 'Edit', edit_devotional_path(@devotional) %> |
+    <%= link_to 'Back', list_devotionals_path %>
+
+
+  </div>
+</div>
+
+
