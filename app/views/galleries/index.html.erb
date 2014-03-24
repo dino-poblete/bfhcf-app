@@ -44,7 +44,8 @@
                     <!-- Full size image link in anchor tag. Thumbnail link in image tag. -->
                     <% if album.images.present? %>
                           <% album.images.each do |image| %>
-                            <!--<img class="lazy prettyphoto" src="loader.gif" data-original="<%= image.file_url(:square) %> />-->
+
+                            <!--<img class="lazy prettyphoto" src="assets/loader.gif" data-original="<%= image.file_url %> />-->
 
                             <%= link_to image_tag(image.file_url(:square), alt: "No Picture Yet"), image.file_url, class: "prettyphoto", rel: "prettyPhoto["+album.title+"]" %>
                           <% end %>
