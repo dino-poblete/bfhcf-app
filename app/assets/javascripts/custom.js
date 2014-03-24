@@ -156,7 +156,11 @@ $(document).ready(function(){
                 $("img.lazy").lazyload({
                     effect: "fadeIn"
                 });
+            },onMixEnd: function(){
+                $("img.lazy").lazyload({
+                });
             }
+
         }
     })
 

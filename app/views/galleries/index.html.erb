@@ -45,9 +45,8 @@
                     <% if album.images.present? %>
                           <% album.images.each do |image| %>
 
-                            <!--<img class="lazy prettyphoto" src="assets/loader.gif" data-original="<%= image.file_url %> />-->
+                            <%= link_to image_tag("loader.gif", class: "lazy prettyphoto", data: { original: image.file_url(:square)}), image.file_url, class: "prettyphoto", rel: "prettyPhoto["+album.title+"]"  %>
 
-                            <%= link_to image_tag(image.file_url(:square), alt: "No Picture Yet"), image.file_url, class: "prettyphoto", rel: "prettyPhoto["+album.title+"]" %>
                           <% end %>
                     <% else  %>
                           <span class="editable editable-click" id="first_name">No Images to Display</span>
