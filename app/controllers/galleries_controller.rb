@@ -100,6 +100,6 @@ class GalleriesController < ApplicationController
     end
 
   def get_gallery_year(year)
-    Event.where("extract(year from created_at) = ?", year)
+    Gallery.where("extract(year from created_at) = ?", year)
   end
 end
