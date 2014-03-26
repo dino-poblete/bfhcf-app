@@ -13,10 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20140324051252) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "devotionals", force: true do |t|
     t.string   "title"
     t.string   "subtitle"
-    t.text     "content",    limit: 255
+    t.text     "content"
     t.date     "posted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -24,8 +27,8 @@ ActiveRecord::Schema.define(version: 20140324051252) do
     t.string   "slug"
   end
 
-  add_index "devotionals", ["slug"], name: "index_devotionals_on_slug", unique: true
-  add_index "devotionals", ["user_id", "created_at"], name: "index_devotionals_on_user_id_and_created_at"
+  add_index "devotionals", ["slug"], name: "index_devotionals_on_slug", unique: true, using: :btree
+  add_index "devotionals", ["user_id", "created_at"], name: "index_devotionals_on_user_id_and_created_at", using: :btree
 
   create_table "events", force: true do |t|
     t.string   "title"
@@ -33,7 +36,7 @@ ActiveRecord::Schema.define(version: 20140324051252) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.string   "picture"
-    t.text     "content",         limit: 255
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "announcement"
@@ -42,7 +45,7 @@ ActiveRecord::Schema.define(version: 20140324051252) do
 
   create_table "galleries", force: true do |t|
     t.string   "title"
-    t.text     "content",    limit: 255
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60,7 +63,7 @@ ActiveRecord::Schema.define(version: 20140324051252) do
     t.datetime "updated_at"
   end
 
-  add_index "ministries", ["name"], name: "index_ministries_on_name"
+  add_index "ministries", ["name"], name: "index_ministries_on_name", using: :btree
 
   create_table "posts", force: true do |t|
     t.string   "title"
@@ -71,12 +74,12 @@ ActiveRecord::Schema.define(version: 20140324051252) do
     t.datetime "updated_at"
   end
 
-  add_index "posts", ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
+  add_index "posts", ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at", using: :btree
 
   create_table "sermons", force: true do |t|
     t.string   "title"
     t.string   "subtitle"
-    t.text     "content",    limit: 255
+    t.text     "content"
     t.date     "posted_at"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -84,8 +87,8 @@ ActiveRecord::Schema.define(version: 20140324051252) do
     t.string   "slug"
   end
 
-  add_index "sermons", ["slug"], name: "index_sermons_on_slug", unique: true
-  add_index "sermons", ["user_id", "created_at"], name: "index_sermons_on_user_id_and_created_at"
+  add_index "sermons", ["slug"], name: "index_sermons_on_slug", unique: true, using: :btree
+  add_index "sermons", ["user_id", "created_at"], name: "index_sermons_on_user_id_and_created_at", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "last_name"
@@ -99,7 +102,7 @@ ActiveRecord::Schema.define(version: 20140324051252) do
     t.string   "avatar"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end

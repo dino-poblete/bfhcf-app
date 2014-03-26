@@ -6,15 +6,7 @@ class SermonsController < ApplicationController
   # GET /sermons.json
   def index
 
-    todayMonth = Time.now.strftime("%Y-%m")
-    searchDate = params[:searchDate]
-    if searchDate.blank?
-      @sermons_date = Time.now
-      @sermons = Sermon.where("strftime('%Y-%m', posted_at) = ?", todayMonth)
-    else
-      @sermons_date = "#{searchDate}-01".to_date
-      @sermons = Sermon.where("strftime('%Y-%m', posted_at) = ?", searchDate)
-    end
+    set_sermon_content
 
   end
 
@@ -27,15 +19,8 @@ class SermonsController < ApplicationController
   def show
     @sermon = Sermon.find(params[:id])
 
-    todayMonth = Time.now.strftime("%Y-%m")
-    searchDate = params[:searchDate]
-    if searchDate.blank?
-      @sermons_date = Time.now
-      @sermons = Sermon.where("strftime('%Y-%m', posted_at) = ?", todayMonth)
-    else
-      @sermons_date = "#{searchDate}-01".to_date
-      @sermons = Sermon.where("strftime('%Y-%m', posted_at) = ?", searchDate)
-    end
+    set_sermon_content
+
   end
 
   def display
@@ -102,5 +87,24 @@ class SermonsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def sermon_params
       params.require(:sermon).permit(:title, :subtitle, :content, :posted_at, :user_id)
+    end
+  
+    def get_sermon_month(month, year)
+      Sermon.where("extract(year from posted_at) = ? and extract(month from posted_at) = ?", year, month)
+    end
+
+    def set_sermon_content
+      todayMonth = Time.now.strftime("%m")
+      todayYear = Time.now.strftime("%Y")
+      searchDate = params[:searchDate]
+      if searchDate.blank?
+        @sermons_date = Time.now
+        @sermons = get_sermon_month(todayMonth, todayYear)
+      else
+        @sermons_date = "#{searchDate}-01".to_date
+        searchDateMonth = @sermons_date.strftime("%m")
+        searchDateYear = @sermons_date.strftime("%Y")
+        @sermons = get_sermon_month(searchDateMonth, searchDateYear)
+      end
     end
 end

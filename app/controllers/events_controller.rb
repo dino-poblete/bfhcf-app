@@ -4,10 +4,12 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    todayMonth = Time.now.strftime("%Y-%m")
 
-    @events_date = Time.now
-    @events = Event.where("strftime('%Y-%m', start_date) = ?", todayMonth)
+      todayMonth = Time.now.strftime("%m")
+      todayYear = Time.now.strftime("%Y")
+
+      @events_date = Time.now
+      @events = get_event_month(todayMonth, todayYear)
   end
 
 
@@ -78,5 +80,9 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:title, :ministry, :start_date, :end_date, :picture, :announcement, :display_to_home, :content)
+    end
+
+    def get_event_month(month, year)
+      Event.where("extract(year from start_date) = ? and extract(month from start_date) = ?", year, month)
     end
 end

@@ -3,9 +3,10 @@ class StaticPagesController < ApplicationController
   def home
 
     today_date = Time.now.strftime("%Y-%m-%d")
-    today_month_year = Time.now.strftime("%Y-%m")
+    todayMonth = Time.now.strftime("%m")
+    todayYear = Time.now.strftime("%Y")
 
-    @events = Event.where("strftime('%Y-%m', start_date) = ?", today_month_year)
+    @events = get_event_month(todayMonth, todayYear)
 
     @post = Post.new
     @devotional = Devotional.new
@@ -24,4 +25,11 @@ class StaticPagesController < ApplicationController
 
   def about
   end
+
+  private
+
+  def get_event_month(month, year)
+    Event.where("extract(year from start_date) = ? and extract(month from start_date) = ?", year, month)
+  end
+
 end

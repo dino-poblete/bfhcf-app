@@ -14,15 +14,7 @@ class DevotionalsController < ApplicationController
       @devotional = latest_devotional
     end
 
-    todayMonth = Time.now.strftime("%Y-%m")
-    searchDate = params[:searchDate]
-    if searchDate.blank?
-      @devotionals_date = Time.now
-      @devotionals = Devotional.where("strftime('%Y-%m', posted_at) = ?", todayMonth)
-    else
-      @devotionals_date = "#{searchDate}-01".to_date
-      @devotionals = Devotional.where("strftime('%Y-%m', posted_at) = ?", searchDate)
-    end
+    set_devotional_content
 
   end
 
@@ -35,15 +27,8 @@ class DevotionalsController < ApplicationController
   # GET /devotionals/1.json
   def show
     @devotional = Devotional.find(params[:id])
-    todayMonth = Time.now.strftime("%Y-%m")
-    searchDate = params[:searchDate]
-    if searchDate.blank?
-      @devotionals_date = Time.now
-      @devotionals = Devotional.where("strftime('%Y-%m', posted_at) = ?", todayMonth)
-    else
-      @devotionals_date = "#{searchDate}-01".to_date
-      @devotionals = Devotional.where("strftime('%Y-%m', posted_at) = ?", searchDate)
-    end
+
+    set_devotional_content
   end
 
   def display
@@ -119,4 +104,24 @@ class DevotionalsController < ApplicationController
     def devotional_params
       params.require(:devotional).permit(:title, :subtitle, :posted_at, :content, :user_id)
     end
+
+    def get_devotional_month(month, year)
+      Devotional.where("extract(year from posted_at) = ? and extract(month from posted_at) = ?", year, month)
+    end
+
+    def set_devotional_content
+      todayMonth = Time.now.strftime("%m")
+      todayYear = Time.now.strftime("%Y")
+      searchDate = params[:searchDate]
+      if searchDate.blank?
+        @devotionals_date = Time.now
+        @devotionals = get_devotional_month(todayMonth, todayYear)
+      else
+        @devotionals_date = "#{searchDate}-01".to_date
+        searchDateMonth = @devotionals_date.strftime("%m")
+        searchDateYear = @devotionals_date.strftime("%Y")
+        @devotionals = get_devotional_month(searchDateMonth, searchDateYear)
+      end
+    end
+
 end

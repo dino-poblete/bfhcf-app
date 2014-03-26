@@ -7,7 +7,7 @@ class GalleriesController < ApplicationController
     todayYear = Time.now.strftime("%Y")
 
     @albums_date = Time.now
-    @albums = Gallery.where("strftime('%Y', created_at) = ?", todayYear)
+    @albums = get_gallery_year(todayYear)
   end
 
   def list
@@ -98,4 +98,8 @@ class GalleriesController < ApplicationController
     def gallery_params
       params.require(:gallery).permit(:title, :content, images_attributes: [:id, :gallery_id, :file])
     end
+
+  def get_gallery_year(year)
+    Event.where("extract(year from created_at) = ?", year)
+  end
 end
