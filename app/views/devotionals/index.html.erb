@@ -54,6 +54,9 @@
               <div class="posts">
 
                 <!-- Each posts should be enclosed inside "entry" class" -->
+
+                <% unless @devotional.blank? %>
+
                 <div class="entry">
                   <!-- Thumbnail -->
 
@@ -78,6 +81,8 @@
                   </div>
                 </div>
 
+
+
                 <div class="post-foot well">
                   <!-- Social media icons -->
                   <div class="social">
@@ -89,7 +94,7 @@
                     <a href="#"><i class="fa fa-google-plus google-plus"></i></a>
                   </div>
                 </div>
-
+                <% end %>
 
               </div>
             </div>

@@ -53,7 +53,7 @@
         <div class="col-md-8 col-sm-8">
           <div class="posts">
 
-
+            <% unless @sermons.blank? %>
             <% @sermons.each do |sermon| %>
                 <div class="entry">
                   <h2><%= link_to sermon.title, sermon %></h2>
@@ -74,6 +74,7 @@
                   <div class="clearfix"></div>
                 </div>
 
+            <% end %>
             <% end %>
           </div>
         </div>

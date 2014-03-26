@@ -9,17 +9,18 @@
         <div class="flexslider">
 
           <ul class="slides">
+            <% unless @events.blank? %>
+                <% @events.each do |event| %>
 
-            <% @events.each do |event| %>
+                    <% if event.display_to_home %>
+                        <li>
+                          <div class="flex-center">
+                            <%= link_to image_tag(event.announcement.url(:announcement), alt: "No Picture Yet"), events_path %>
+                          </div>
+                        </li>
+                    <% end %>
 
-                <% if event.display_to_home %>
-                    <li>
-                      <div class="flex-center">
-                        <%= link_to image_tag(event.announcement.url(:announcement), alt: "No Picture Yet"), events_path %>
-                      </div>
-                    </li>
-                <% end %>
-
+                <% end  %>
             <% end  %>
           </ul>
         </div>
@@ -106,6 +107,9 @@
 
             <!-- Each posts should be enclosed inside "entry" class" -->
             <!-- Post one -->
+
+            <% unless @latest_post.blank? %>
+
             <div class="entry">
               <!-- Thumbnail -->
 
@@ -132,6 +136,8 @@
               </div>
             </div>
 
+
+
             <div class="post-foot well">
               <!-- Social media icons -->
               <div class="social">
@@ -143,6 +149,8 @@
                 <a href="#"><i class="fa fa-google-plus google-plus"></i></a>
               </div>
             </div>
+
+            <% end %>
             <!-- Navigation -->
             <div class="clearfix"></div>
 
@@ -220,6 +228,8 @@
 
             <!-- Each posts should be enclosed inside "entry" class" -->
             <!-- Post one -->
+
+            <% unless @latest_devotional.blank? %>
             <div class="entry">
               <!-- Thumbnail -->
 
@@ -246,6 +256,7 @@
               </div>
             </div>
 
+
             <div class="post-foot well">
               <!-- Social media icons -->
               <div class="social">
@@ -257,7 +268,7 @@
                 <a href="#"><i class="fa fa-google-plus google-plus"></i></a>
               </div>
             </div>
-
+            <% end %>
             <!-- Navigation -->
 
             <div class="clearfix"></div>

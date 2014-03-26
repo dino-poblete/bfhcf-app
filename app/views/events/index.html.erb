@@ -20,7 +20,7 @@
               <div class="row">
                 <div class="col-md-12">
 
-
+                  <% unless @events.blank? %>
                   <% @events.each do |event| %>
                       <div class="rblock">
                         <div class="row">
@@ -43,6 +43,7 @@
                       </div>
 
                       <hr />
+                  <% end %>
                   <% end %>
 
                 </div>
