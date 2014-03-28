@@ -8,32 +8,33 @@
 
 
     <% unless @devotionals.blank?  %>
-    <table class="table table-striped table-bordered table-hover">
-      <thead>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Devotional Date</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-      </thead>
-
-      <tbody>
-      <% @devotionals.each do |devotional| %>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover">
+          <thead>
           <tr>
-            <td><%= devotional.title %></td>
-            <td><%= User.find_by_id(devotional.user_id).full_name %></td>
-            <td><%= format_short_date(devotional.posted_at) %></td>
-            <td><%= link_to 'Show', display_devotional_path(devotional) %></td>
-            <td><%= link_to 'Edit', edit_devotional_path(devotional) %></td>
-            <td><%= link_to 'Delete', devotional, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Devotional Date</th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
-      <% end %>
-      </tbody>
-    </table>
+          </thead>
 
+          <tbody>
+          <% @devotionals.each do |devotional| %>
+              <tr>
+                <td><%= devotional.title %></td>
+                <td><%= User.find_by_id(devotional.user_id).full_name %></td>
+                <td><%= format_short_date(devotional.posted_at) %></td>
+                <td><%= link_to 'Show', display_devotional_path(devotional) %></td>
+                <td><%= link_to 'Edit', edit_devotional_path(devotional) %></td>
+                <td><%= link_to 'Delete', devotional, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+    </div>
     <%= will_paginate %>
     <% else  %>
         <p>No Devotionals to Display</p>
