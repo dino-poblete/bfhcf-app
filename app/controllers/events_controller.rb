@@ -9,7 +9,7 @@ class EventsController < ApplicationController
       todayYear = Time.now.strftime("%Y")
 
       @events_date = Time.now
-      @events = get_event_month(todayMonth, todayYear)
+      @events = get_event_year(todayYear)
   end
 
 
@@ -82,7 +82,13 @@ class EventsController < ApplicationController
       params.require(:event).permit(:title, :ministry, :start_date, :end_date, :picture, :announcement, :display_to_home, :content)
     end
 
-    def get_event_month(month, year)
-      Event.where("extract(year from start_date) = ? and extract(month from start_date) = ?", year, month)
+    def get_event_year(year)
+      Event.where("extract(year from start_date) = ?", year)
     end
+
+    def get_event_month(object, month)
+      todayYear = Time.now.strftime("%Y")
+      object.where("extract(year from start_date) = ? and extract(month from start_date) = ?", todayYear, month)
+    end
+    helper_method :get_event_month
 end

@@ -86,6 +86,7 @@ BfhcfApp::Application.routes.draw do
   match '/ministries',      to: 'static_pages#ministries',  via: 'get'
   match '/events',          to: 'events#index',             via: 'get'
   match '/contact',         to: 'static_pages#contact',     via: 'get'
+  match '/schedule',         to: 'static_pages#schedule',     via: 'get'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

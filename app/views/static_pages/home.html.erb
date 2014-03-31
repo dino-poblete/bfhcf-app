@@ -15,7 +15,7 @@
                     <% if event.display_to_home %>
                         <li>
                           <div class="flex-center">
-                            <%= link_to image_tag(event.announcement.url(:announcement), alt: "No Picture Yet"), events_path %>
+                            <%= link_to image_tag(event.announcement.url(:announcement), alt: "No Picture Yet"), "events##{event.title.parameterize}" %>
                           </div>
                         </li>
                     <% end %>
@@ -298,7 +298,7 @@
 
       <li>
 
-        <a href="#">
+        <a href="ministries#cluster2">
           <!-- Image -->
           <%= image_tag "ministries/default-ministry.jpg" %>
           <!-- Content with background color Class -->
@@ -313,7 +313,7 @@
 
       <li>
 
-        <a href="#">
+        <a href="ministries#childrens-ministry">
           <%= image_tag "ministries/childrens-ministry.jpg" %>
           <div class="hover-content b-purple">
             <h6>Children's Ministry</h6>
@@ -326,7 +326,7 @@
 
       <li>
 
-        <a href="#">
+        <a href="ministries#praise-and-worship">
           <%= image_tag "ministries/default-ministry.jpg" %>
           <div class="hover-content b-green">
             <h6>Praise and Worship</h6>
@@ -338,7 +338,7 @@
 
       <li>
 
-        <a href="#">
+        <a href="ministries#multimedia-ministry">
           <%= image_tag "ministries/default-ministry.jpg" %>
           <div class="hover-content b-blue">
             <h6>Multimedia Ministry</h6>
@@ -350,7 +350,7 @@
 
       <li>
 
-        <a href="#">
+        <a href="ministries#men-in-bread">
           <%= image_tag "ministries/default-ministry.jpg" %>
           <div class="hover-content b-lblue">
             <h6>Men in Bread</h6>
@@ -362,7 +362,7 @@
 
       <li>
 
-        <a href="#">
+        <a href="ministries#women-of-bread">
           <%= image_tag "ministries/default-ministry.jpg" %>
           <div class="hover-content b-orange">
             <h6>Women of Bread</h6>
@@ -373,7 +373,7 @@
       </li>
       <li>
 
-        <a href="#">
+        <a href="ministries#salt-and-light">
           <!-- Image -->
           <%= image_tag "ministries/salt-and-light.jpg" %>
           <!-- Content with background color Class -->
@@ -388,7 +388,7 @@
 
       <li>
 
-        <a href="#">
+        <a href="ministries#young-peoples-fellowship">
           <%= image_tag "ministries/default-ministry.jpg" %>
           <div class="hover-content b-purple">
             <h6>Young People's Fellowship</h6>
@@ -400,7 +400,7 @@
 
       <li>
 
-        <a href="#">
+        <a href="ministries#teens-fellowship">
           <%= image_tag "ministries/default-ministry.jpg" %>
           <div class="hover-content b-green">
             <h6>Teens Fellowship</h6>
@@ -413,7 +413,7 @@
 
       <li>
 
-        <a href="#">
+        <a href="ministries#kaagapay-ministry">
           <%= image_tag "ministries/default-ministry.jpg" %>
           <div class="hover-content b-blue">
             <h6>Kaagapay Ministry</h6>
@@ -426,7 +426,7 @@
 
       <li>
 
-        <a href="#">
+        <a href="ministries#membership">
           <%= image_tag "ministries/default-ministry.jpg" %>
           <div class="hover-content b-lblue">
             <h6>Membership</h6>

@@ -21,6 +21,10 @@ module ApplicationHelper
     date.strftime("%B %Y")
   end
 
+  def format_year(date)
+    date.strftime("%Y")
+  end
+
   def format_short_date(date)
     date.strftime("%B %d, %Y")
   end

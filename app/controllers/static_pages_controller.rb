@@ -6,7 +6,10 @@ class StaticPagesController < ApplicationController
     todayMonth = Time.now.strftime("%m")
     todayYear = Time.now.strftime("%Y")
 
-    @events = get_event_month(todayMonth, todayYear)
+    todayMonthFirstDay = Time.now.strftime("%Y-%m-01")
+    @events = get_all_current_events(todayMonthFirstDay)
+
+    #@events = get_event_month(todayMonth, todayYear)
 
     @post = Post.new
     @devotional = Devotional.new
@@ -26,10 +29,17 @@ class StaticPagesController < ApplicationController
   def about
   end
 
+  def schedule
+  end
+
   private
 
   def get_event_month(month, year)
     Event.where("extract(year from start_date) = ? and extract(month from start_date) = ?", year, month)
+  end
+
+  def get_all_current_events(month)
+    Event.where("start_date > ?", month)
   end
 
 end
