@@ -1,8 +1,8 @@
 BfhcfApp::Application.routes.draw do
 
+  devise_for :users
   resources :users
   resources :posts
-  resources :sessions, only: [:new, :create, :destroy]
   resources :devotionals do
     collection do
       get :list
@@ -66,11 +66,11 @@ BfhcfApp::Application.routes.draw do
 
   root to: 'static_pages#home'
 
-  match '/signup',  to: 'users#new',            via: 'get'
-  match '/signup', :to => 'users#create', :via => :post, :as => :post_signup
+  match '/users/new',  to: 'users#new',            via: 'get'
+  match '/users/new', :to => 'users#create', :via => :post, :as => :post_signup
 
-  match '/signin',  to: 'sessions#new',         via: 'get'
-  match '/signout', to: 'sessions#destroy',     via: 'get'
+  #match '/signin',  to: 'sessions#new',         via: 'get'
+  #match '/signout', to: 'sessions#destroy',     via: 'get'
 
 
 

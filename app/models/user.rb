@@ -1,7 +1,12 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable,
+         :recoverable, :rememberable, :trackable
+
   has_many :devotionals
   before_save { self.email = email.downcase }
-  before_create :create_remember_token
+  before_update :check_password
 
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: { maximum: 50 }
@@ -12,29 +17,26 @@ class User < ActiveRecord::Base
             format: { with: VALID_EMAIL_REGEX },
             uniqueness:  { case_sensitive: false }
 
-  has_secure_password
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 },
+            presence: true,
+            on: :create
+
+  validates :password_confirmation, presence: true,
+            on: :create
 
   mount_uploader :avatar, AvatarUploader
-
-  def User.new_remember_token
-    SecureRandom.urlsafe_base64
-  end
-
-  def User.hash(token)
-    Digest::SHA1.hexdigest(token.to_s)
-  end
 
   def full_name
     "#{first_name} #{last_name}"
   end
 
   private
+  def check_password
+    is_ok = self.password.nil? || self.password.empty? || self.password.length >= 6
 
-  def create_remember_token
-    self.remember_token = User.hash(User.new_remember_token)
+    self.errors[:password] << "Password is too short (minimum is 6 characters)" unless is_ok
+
+    is_ok # The callback returns a Boolean value indicating success; if it fails, the save is blocked
   end
-
-
 
 end

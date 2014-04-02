@@ -6,7 +6,7 @@ class StaticPagesController < ApplicationController
     todayMonth = Time.now.strftime("%m")
     todayYear = Time.now.strftime("%Y")
 
-    todayMonthFirstDay = Time.now.strftime("%Y-%m-01")
+    todayMonthFirstDay = Time.now.at_beginning_of_month.strftime("%Y-%m-%d")
     @events = get_all_current_events(todayMonthFirstDay)
 
     #@events = get_event_month(todayMonth, todayYear)

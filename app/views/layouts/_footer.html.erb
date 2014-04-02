@@ -6,10 +6,10 @@
         <div class="copy">
           <h6>Bread From Heaven <span class="color">Christian Fellowship</span></h6>
           <p>Copyright &copy; <a href="#">BFHCF</a> - <%= link_to "Home", root_path %> | <%= link_to "About Us", about_path %> | <%= link_to "Contact Us", contact_path %>
-            <% if !signed_in? %>
-                | <%= link_to "Sign in", signin_path %>
+            <% if !user_signed_in? %>
+                | <%= link_to "Sign in", new_user_session_path %>
             <% else %>
-                | <%= link_to "Sign out", signout_path %>
+                | <%= link_to "Sign out", destroy_user_session_path %>
             <% end %>
           </p>
         </div>

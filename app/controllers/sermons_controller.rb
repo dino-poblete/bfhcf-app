@@ -1,6 +1,6 @@
 class SermonsController < ApplicationController
   before_action :set_sermon, only: [:display, :show, :edit, :update, :destroy]
-  before_action :signed_in_user, only: [:list, :display, :new, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:list, :display, :new, :edit, :update, :destroy]
 
   # GET /sermons
   # GET /sermons.json

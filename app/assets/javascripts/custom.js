@@ -180,4 +180,36 @@ function checkTick() {
     }
 }
 
+function GetURLHashParameter(sParam) {
+    var sPageURL = document.location.toString();
+    var sHashGroup = sPageURL.split('#')[1];
+    var sURLVariables = sHashGroup.split('&');
+    for (var i = 0; i < sURLVariables.length; i++)
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam)
+        {
+            return sParameterName[1];
+        }
+    }
+}
 
+$(document).ready(function() {
+
+    var url = document.location.toString();
+    if (url.match('#')) {
+        $('.nav-tabs a[href=#'+GetURLHashParameter('month')+']').tab('show');
+
+        setTimeout(function (){
+            if ($('.nav-tabs a[href=#'+GetURLHashParameter('month')+']').parent().hasClass('active') ) {
+                $("html, body").animate({ scrollTop: $('#'+GetURLHashParameter('slug')).offset().top }, 500);
+            }
+        }, 500);
+
+    }
+
+    // Change hash for page-reload
+    $('.nav-tabs a').on('shown', function (e) {
+        window.location.hash = e.target.hash;
+    })
+})

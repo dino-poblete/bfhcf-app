@@ -8,6 +8,7 @@
 
 
 ministry_list = [
+     "Bread from Heaven",
      "Christ's Ambassador of Bread - Cluster 1" ,
      "Armor of God - Cluster 2" ,
      "Tribes of the Lord - Cluster 3" ,
@@ -28,3 +29,4 @@ ministry_list.each do |name|
 end
 
 User.create(last_name: "Admin", first_name: "BFHCF", email: "admin@bfhcf.com", password:"password", password_confirmation:"password" )
+User.create(last_name: "Castillo", first_name: "Rev. Doy", email: "doy@bfhcf.com", password:"password", password_confirmation:"password" )

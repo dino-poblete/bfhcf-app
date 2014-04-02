@@ -2,7 +2,7 @@ module UsersHelper
 
   def show_avatar(object)
     if User.find_by_id(object.user_id).avatar.blank?
-    image_tag "people/default.jpg", alt: "No Avatar Yet"
+      image_tag "people/default.jpg", alt: "No Avatar Yet"
     else
       image_tag User.find_by_id(object.user_id).avatar.url(:standard), alt: "No Avatar Yet"
     end

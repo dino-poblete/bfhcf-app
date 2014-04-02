@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in_user, only: [:index, :edit, :update, :destroy, :show]
-  #before_filter :signed_in_user_access, only: [:new, :create]
-  #before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
+  before_action :authenticate_user!
 
   # GET /users
   # GET /users.json
@@ -24,7 +21,6 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
   end
 
   # POST /users
@@ -34,23 +30,33 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        #sign_in @user
-        #flash[:success] = "Welcome to BFHCF!"
-        #redirect_to root_url
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
-        format.html { render action: 'new'}
+        format.html { render action: 'new' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+
     end
   end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+
+    if user_params[:password].blank?
+      user_params.delete(:password)
+      user_params.delete(:password_confirmation)
+    end
+
+    successfully_updated = if needs_password?(@user, user_params)
+                             @user.update(user_params)
+                           else
+                             @user.update_without_password(user_params)
+                           end
+
     respond_to do |format|
-      if @user.update(user_params)
+      if successfully_updated
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
@@ -63,14 +69,11 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    user = User.find(params[:id])
-    if (current_user? user) && (current_user.admin?)
-      flash[:error] = "Can not delete own admin account!"
-    else
-      user.destroy
-      flash[:success] = "User destroyed."
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_url }
+      format.json { head :no_content }
     end
-    redirect_to users_path
   end
 
   private
@@ -84,14 +87,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:last_name, :first_name, :email, :password, :password_confirmation, :avatar )
     end
 
-    #before filters
-
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
-
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
+    def needs_password?(user, params)
+      params[:password].present?
     end
 end

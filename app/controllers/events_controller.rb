@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in_user, only: [:list, :new, :show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:list, :new, :show, :edit, :update, :destroy]
   # GET /events
   # GET /events.json
   def index

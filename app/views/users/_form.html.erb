@@ -8,9 +8,9 @@
   <%= f.label :avatar, class:"control-label col-md-3" %>
   <div class="col-md-9">
     <% if @user.avatar.blank? %>
-    <%= image_tag "people/default.jpg", alt: "No Avatar Yet" %>
+        <%= image_tag "people/default.jpg", alt: "No Avatar Yet" %>
     <% else %>
-    <%= image_tag @user.avatar.url(:standard), alt: "No Avatar Yet" %>
+        <%= image_tag @user.avatar.url(:standard), alt: "No Avatar Yet" %>
     <% end  %>
     <%= f.file_field :avatar, class:"form-control" %>
     <%= f.hidden_field :avatar_cache %>

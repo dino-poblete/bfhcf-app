@@ -5,6 +5,9 @@
 
     <h2>Listing Events</h2>
     <hr />
+    <% if !flash.empty? %>
+        <div class="alert alert-success"> <%= notice %></div>
+    <% end  %>
 
     <% unless @events.blank?  %>
     <div class="table-responsive">
