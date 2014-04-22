@@ -1,0 +1,32 @@
+<!-- Slider starts -->
+
+<div class="full-slider">
+  <!-- Slider (Flex Slider) -->
+
+  <div class="container-full-width">
+    <div class="row no-margin">
+      <div class="col-md-12 no-padd">
+        <div class="flexslider">
+
+          <ul class="slides">
+            <% unless @events.blank? %>
+                <% @events.each do |event| %>
+
+                    <% if event.display_to_home %>
+                        <li>
+                          <div class="flex-center">
+                            <%= link_to image_tag(event.announcement.url(:announcement), alt: "No Picture Yet"), "events#month=#{event.start_date.strftime("%b")}&slug=#{event.title.parameterize}" %>
+                          </div>
+                        </li>
+                    <% end %>
+
+                <% end  %>
+            <% end  %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slider Ends -->

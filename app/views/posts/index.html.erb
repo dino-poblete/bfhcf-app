@@ -1,8 +1,5 @@
 <%= title('Posts') %>
 
-<div class="content">
-  <div class="container">
-
     <h2>Listing Posts</h2>
     <hr />
     <% if !flash.empty? %>
@@ -41,9 +38,5 @@
         <p>No posts to Display</p>
     <% end  %>
     <p><%= link_to 'New post', new_post_path %></p>
-  </div>
-</div>
-
-
 
 
